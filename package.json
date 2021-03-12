@@ -1,7 +1,7 @@
 {
-  "name": "com.atkins.unity.cloud-wrappers",
-  "displayName": "Atkins Cloud Helpers",
-  "description": "Cloud Storage and database wrappers",
+  "name": "com.atkins.unity.azure-functions",
+  "displayName": "Atkins Azure Helpers",
+  "description": "Azure Cloud Services",
   "version": "1.0.0",
   "unity": "2019.3",
   "license": "copyright",
