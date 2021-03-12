@@ -1,5 +1,5 @@
 {
-  "name": "com.atkins.unity.azure-functions",
+  "name": "com.atkins.unity.azure-helpers",
   "displayName": "Atkins Azure Helpers",
   "description": "Azure Cloud Services",
   "version": "1.0.0",
