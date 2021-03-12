@@ -1,0 +1,30 @@
+{
+  "name": "com.atkins.unity.cloud-wrappers",
+  "displayName": "Atkins Cloud Helpers",
+  "description": "Cloud Storage and database wrappers",
+  "version": "1.0.0",
+  "unity": "2019.3",
+  "license": "copyright",
+  "author": {
+    "name": "Atkins",
+    "email": "",
+    "url": "https://github.com/UnityCreativeDesign"
+  },
+  "repository": {
+    "type": "git",
+    "url": "",
+    "directory": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "com.greener-games.scriptable-data-asset": "1.0.0",
+    "com.svermeulen.asyncawaitutil": "0.1.3",
+    "com.firenero.asyncio": "1.3.1",
+    "com.greener-games.unity-ensure": "0.1.0"
+  },
+  "publishDate": "2021-01-22T14:06:59.6668582Z",
+  "samples": ""
+}

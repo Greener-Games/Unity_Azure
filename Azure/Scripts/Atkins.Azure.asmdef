@@ -1,0 +1,17 @@
+{
+    "name": "Atkins.Azure",
+    "references": [
+        "GUID:bcfbeff0a0bfb0e4f93af97eb0d6ec66",
+        "GUID:6f099b00ee0d34f4eb8ef168f15e5087",
+        "GUID:3bc7f0ed4ab7b9646af28589007ec4cb"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
