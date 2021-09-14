@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: Atkins.Azure
+  commentId: N:Atkins.Azure
+  id: Atkins.Azure
+  children:
+  - Atkins.Azure.AzureFileStorage
+  - Atkins.Azure.AzureFileStorage.BlobType
+  - Atkins.Azure.AzureImages
+  - Atkins.Azure.AzureSettings
+  - Atkins.Azure.ProgressRecorder
+  langs:
+  - csharp
+  - vb
+  name: Atkins.Azure
+  nameWithType: Atkins.Azure
+  fullName: Atkins.Azure
+  type: Namespace
+  assemblies:
+  - Atkins.Azure
+references:
+- uid: Atkins.Azure.AzureFileStorage
+  commentId: T:Atkins.Azure.AzureFileStorage
+  name: AzureFileStorage
+  nameWithType: AzureFileStorage
+  fullName: Atkins.Azure.AzureFileStorage
+- uid: Atkins.Azure.AzureFileStorage.BlobType
+  commentId: T:Atkins.Azure.AzureFileStorage.BlobType
+  parent: Atkins.Azure
+  name: AzureFileStorage.BlobType
+  nameWithType: AzureFileStorage.BlobType
+  fullName: Atkins.Azure.AzureFileStorage.BlobType
+- uid: Atkins.Azure.ProgressRecorder
+  commentId: T:Atkins.Azure.ProgressRecorder
+  name: ProgressRecorder
+  nameWithType: ProgressRecorder
+  fullName: Atkins.Azure.ProgressRecorder
+- uid: Atkins.Azure.AzureImages
+  commentId: T:Atkins.Azure.AzureImages
+  name: AzureImages
+  nameWithType: AzureImages
+  fullName: Atkins.Azure.AzureImages
+- uid: Atkins.Azure.AzureSettings
+  commentId: T:Atkins.Azure.AzureSettings
+  parent: Atkins.Azure
+  name: AzureSettings
+  nameWithType: AzureSettings
+  fullName: Atkins.Azure.AzureSettings
+- uid: Atkins.Azure
+  commentId: N:Atkins.Azure
+  name: Atkins.Azure
+  nameWithType: Atkins.Azure
+  fullName: Atkins.Azure

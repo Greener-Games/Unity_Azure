@@ -1,0 +1,62 @@
+{
+  "api/Atkins.Azure.AzureFileStorage.BlobType.html": {
+    "href": "api/Atkins.Azure.AzureFileStorage.BlobType.html",
+    "title": "Enum AzureFileStorage.BlobType | Documentation",
+    "keywords": "Enum AzureFileStorage.BlobType Namespace : Atkins.Azure Assembly : Atkins.Azure.dll Syntax public enum BlobType Fields Name Description APPEND BLOCK PAGE"
+  },
+  "api/Atkins.Azure.AzureFileStorage.html": {
+    "href": "api/Atkins.Azure.AzureFileStorage.html",
+    "title": "Class AzureFileStorage | Documentation",
+    "keywords": "Class AzureFileStorage Class acting like an interface between ICON and Azure systems for uploading files. Inheritance Object Object Component Behaviour MonoBehaviour AzureFileStorage Namespace : Atkins.Azure Assembly : Atkins.Azure.dll Syntax public class AzureFileStorage : MonoBehaviour Methods View Source CheckFileSize(String, String) Unused function? Function giving the size of a file Declaration public static Task<long> CheckFileSize(string containerName, string fileName) Parameters Type Name Description String containerName The cloud blob container String fileName The name of the file we want the size of Returns Type Description Task < Int64 > Returns the lenght of the file View Source DeleteFile(String, String) Delete a file from Azure async Declaration public static Task<bool> DeleteFile(string containerName, string fileName) Parameters Type Name Description String containerName String fileName Returns Type Description Task < Boolean > View Source DownloadFile(String, String, String, Action<ProgressRecorder>, Int32, Int32) Download a file from Azure server async Declaration public static Task<bool> DownloadFile(string containerName, string sourceLocation, string saveLocation, Action<ProgressRecorder> processCallback = null, int maxTries = 3, int currentTries = 0) Parameters Type Name Description String containerName The name of the CloudBlobContainer String sourceLocation The blob name String saveLocation The path to the file we want to delete Action < ProgressRecorder > processCallback The progress callback Int32 maxTries Maximum numbers of tried before failing Int32 currentTries current number of tried for the download Returns Type Description Task < Boolean > View Source GetContainer(String) Static function returning the Container Task for a given name Declaration public static Task<CloudBlobContainer> GetContainer(string containerName) Parameters Type Name Description String containerName The name of the container we want to find Returns Type Description Task < CloudBlobContainer > View Source GetFileProperties(String, String) Get the property data for the Blob file. Declaration public static Task<BlobProperties> GetFileProperties(string containerName, string fileName) Parameters Type Name Description String containerName String fileName Returns Type Description Task < BlobProperties > View Source LastModifiedAsync(String, String) Get the last modified time of a file in Azure async Declaration public static Task<DateTime> LastModifiedAsync(string containerName, string fileName) Parameters Type Name Description String containerName String fileName Returns Type Description Task < DateTime > View Source UploadFile(String, String, String, CancellationToken, AzureFileStorage.BlobType, Action<ProgressRecorder>, Int32) Upload a file to Azure server async Declaration public static Task<bool> UploadFile(string containerName, string sourceFile, string blobSaveLocation, CancellationToken token, AzureFileStorage.BlobType blobType = AzureFileStorage.BlobType.PAGE, Action<ProgressRecorder> processCallback = null, int tries = 0) Parameters Type Name Description String containerName The name of the CloudBlobContainer String sourceFile The path of the file to upload String blobSaveLocation The blob name CancellationToken token The cancellation token. Used only in TransferManager.UploadAsync method. AzureFileStorage.BlobType blobType The type of the blob. By default: PAGE Action < ProgressRecorder > processCallback The progress callback element. Used for creating the progress recorder Int32 tries Returns Type Description Task < Boolean >"
+  },
+  "api/Atkins.Azure.AzureImages.html": {
+    "href": "api/Atkins.Azure.AzureImages.html",
+    "title": "Class AzureImages | Documentation",
+    "keywords": "Class AzureImages Plays the role of an interface between the Azure system and ICON framework. It allows user/coder to simply upload, download and delete images on server Inheritance Object Object Component Behaviour MonoBehaviour AzureImages Namespace : Atkins.Azure Assembly : Atkins.Azure.dll Syntax public class AzureImages : MonoBehaviour Fields View Source ContainerName Declaration public const string ContainerName = \"images\" Field Value Type Description String View Source FileFormat Declaration public const string FileFormat = \"Image_\" Field Value Type Description String View Source FolderName Declaration public const string FolderName = \"Images\" Field Value Type Description String Methods View Source DeleteImage(String) removes and image from the server Declaration public static Task DeleteImage(string imgName) Parameters Type Name Description String imgName Returns Type Description Task View Source GetCachedImage(String, Int32) Load an image from the cache or download from images container Declaration public static Task<Texture2D> GetCachedImage(string fileName, int forceCacheTime = 300) Parameters Type Name Description String fileName Int32 forceCacheTime Returns Type Description Task < Texture2D > View Source UploadImage(String) Upload an image to the database and return its new name Declaration public static Task<string> UploadImage(string imagePath) Parameters Type Name Description String imagePath Returns Type Description Task < String >"
+  },
+  "api/Atkins.Azure.AzureSettings.html": {
+    "href": "api/Atkins.Azure.AzureSettings.html",
+    "title": "Class AzureSettings | Documentation",
+    "keywords": "Class AzureSettings A class creating the Azure settings Inheritance Object Object ScriptableObject GG.ScriptableDataAsset.ScriptableDataAsset < AzureSettings > AzureSettings Namespace : Atkins.Azure Assembly : Atkins.Azure.dll Syntax public class AzureSettings : ScriptableDataAsset<AzureSettings> Fields View Source connectionString The request done to Azure Declaration [SerializeField] public string connectionString Field Value Type Description String Properties View Source AssetName The name of the asset Declaration protected override string AssetName { get; } Property Value Type Description String Overrides GG.ScriptableDataAsset.ScriptableDataAsset<Atkins.Azure.AzureSettings>.AssetName View Source ConnectionString A static reference to the connection string (The request we do to Azure) Declaration public static string ConnectionString { get; } Property Value Type Description String Methods View Source NewAsset(AzureSettings) Function setting up the Asset Declaration protected override void NewAsset(AzureSettings asset) Parameters Type Name Description AzureSettings asset Overrides GG.ScriptableDataAsset.ScriptableDataAsset<Atkins.Azure.AzureSettings>.NewAsset(Atkins.Azure.AzureSettings)"
+  },
+  "api/Atkins.Azure.html": {
+    "href": "api/Atkins.Azure.html",
+    "title": "Namespace Atkins.Azure | Documentation",
+    "keywords": "Namespace Atkins.Azure Classes AzureFileStorage Class acting like an interface between ICON and Azure systems for uploading files. AzureImages Plays the role of an interface between the Azure system and ICON framework. It allows user/coder to simply upload, download and delete images on server AzureSettings A class creating the Azure settings ProgressRecorder A helper class to record progress reported by data movement library. Enums AzureFileStorage.BlobType"
+  },
+  "api/Atkins.Azure.ProgressRecorder.html": {
+    "href": "api/Atkins.Azure.ProgressRecorder.html",
+    "title": "Class ProgressRecorder | Documentation",
+    "keywords": "Class ProgressRecorder A helper class to record progress reported by data movement library. Inheritance Object ProgressRecorder Namespace : Atkins.Azure Assembly : Atkins.Azure.dll Syntax public class ProgressRecorder : IProgress<TransferStatus> Constructors View Source ProgressRecorder(String, CloudBlob) A very basic constructor Declaration public ProgressRecorder(string fileId, CloudBlob cloudBlob) Parameters Type Name Description String fileId CloudBlob cloudBlob View Source ProgressRecorder(String, Int64) A very basic constructor Declaration public ProgressRecorder(string fileId, long size) Parameters Type Name Description String fileId Int64 size Fields View Source updateCallback Declaration public Action<ProgressRecorder> updateCallback Field Value Type Description Action < ProgressRecorder > Properties View Source ProgressPercentage Returns the current percentage of the download between 0-100 Declaration public int ProgressPercentage { get; } Property Value Type Description Int32 View Source TimeRemaining Declaration public TimeSpan TimeRemaining { get; } Property Value Type Description TimeSpan Methods View Source Report(TransferStatus) Declaration public void Report(TransferStatus progress) Parameters Type Name Description TransferStatus progress View Source ToString() Declaration public override string ToString() Returns Type Description String Overrides Object.ToString()"
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "Title | Documentation",
+    "keywords": "Title content content"
+  },
+  "manual/0.Introduction/1.Introduction.html": {
+    "href": "manual/0.Introduction/1.Introduction.html",
+    "title": "INTRODUCTION | Documentation",
+    "keywords": "INTRODUCTION What is this package? Add description. Unity version Unity version:"
+  },
+  "manual/0.Introduction/Index.html": {
+    "href": "manual/0.Introduction/Index.html",
+    "title": "| Documentation",
+    "keywords": ""
+  },
+  "manual/1.SetUp/1.SetUp.html": {
+    "href": "manual/1.SetUp/1.SetUp.html",
+    "title": "PACKAGE SET UP | Documentation",
+    "keywords": "PACKAGE SET UP Add description."
+  },
+  "manual/1.SetUp/Index.html": {
+    "href": "manual/1.SetUp/Index.html",
+    "title": "| Documentation",
+    "keywords": ""
+  },
+  "manual/Index.html": {
+    "href": "manual/Index.html",
+    "title": "| Documentation",
+    "keywords": ""
+  }
+}

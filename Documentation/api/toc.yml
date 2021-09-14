@@ -1,0 +1,14 @@
+### YamlMime:TableOfContent
+- uid: Atkins.Azure
+  name: Atkins.Azure
+  items:
+  - uid: Atkins.Azure.AzureFileStorage
+    name: AzureFileStorage
+  - uid: Atkins.Azure.AzureFileStorage.BlobType
+    name: AzureFileStorage.BlobType
+  - uid: Atkins.Azure.AzureImages
+    name: AzureImages
+  - uid: Atkins.Azure.AzureSettings
+    name: AzureSettings
+  - uid: Atkins.Azure.ProgressRecorder
+    name: ProgressRecorder

@@ -1,0 +1,458 @@
+### YamlMime:ManagedReference
+items:
+- uid: Atkins.Azure.AzureSettings
+  commentId: T:Atkins.Azure.AzureSettings
+  id: AzureSettings
+  parent: Atkins.Azure
+  children:
+  - Atkins.Azure.AzureSettings.AssetName
+  - Atkins.Azure.AzureSettings.connectionString
+  - Atkins.Azure.AzureSettings.ConnectionString
+  - Atkins.Azure.AzureSettings.NewAsset(Atkins.Azure.AzureSettings)
+  langs:
+  - csharp
+  - vb
+  name: AzureSettings
+  nameWithType: AzureSettings
+  fullName: Atkins.Azure.AzureSettings
+  type: Class
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureSettings.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: AzureSettings
+    path: ../Packages/Azure/Scripts/AzureSettings.cs
+    startLine: 8
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nA class creating the Azure settings \n"
+  example: []
+  syntax:
+    content: 'public class AzureSettings : ScriptableDataAsset<AzureSettings>'
+    content.vb: >-
+      Public Class AzureSettings
+          Inherits ScriptableDataAsset(Of AzureSettings)
+  inheritance:
+  - System.Object
+  - UnityEngine.Object
+  - UnityEngine.ScriptableObject
+  - GG.ScriptableDataAsset.ScriptableDataAsset{Atkins.Azure.AzureSettings}
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Atkins.Azure.AzureSettings.AssetName
+  commentId: P:Atkins.Azure.AzureSettings.AssetName
+  id: AssetName
+  parent: Atkins.Azure.AzureSettings
+  langs:
+  - csharp
+  - vb
+  name: AssetName
+  nameWithType: AzureSettings.AssetName
+  fullName: Atkins.Azure.AzureSettings.AssetName
+  type: Property
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureSettings.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: AssetName
+    path: ../Packages/Azure/Scripts/AzureSettings.cs
+    startLine: 13
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nThe name of the asset \n"
+  example: []
+  syntax:
+    content: protected override string AssetName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Protected Overrides ReadOnly Property AssetName As String
+  overridden: GG.ScriptableDataAsset.ScriptableDataAsset{Atkins.Azure.AzureSettings}.AssetName
+  overload: Atkins.Azure.AzureSettings.AssetName*
+  modifiers.csharp:
+  - protected
+  - override
+  - get
+  modifiers.vb:
+  - Protected
+  - Overrides
+  - ReadOnly
+- uid: Atkins.Azure.AzureSettings.connectionString
+  commentId: F:Atkins.Azure.AzureSettings.connectionString
+  id: connectionString
+  parent: Atkins.Azure.AzureSettings
+  langs:
+  - csharp
+  - vb
+  name: connectionString
+  nameWithType: AzureSettings.connectionString
+  fullName: Atkins.Azure.AzureSettings.connectionString
+  type: Field
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureSettings.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: connectionString
+    path: ../Packages/Azure/Scripts/AzureSettings.cs
+    startLine: 18
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nThe request done to Azure\n"
+  example: []
+  syntax:
+    content: >-
+      [SerializeField]
+
+      public string connectionString
+    return:
+      type: System.String
+    content.vb: >-
+      <SerializeField>
+
+      Public connectionString As String
+  attributes:
+  - type: UnityEngine.SerializeField
+    ctor: UnityEngine.SerializeField.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Atkins.Azure.AzureSettings.ConnectionString
+  commentId: P:Atkins.Azure.AzureSettings.ConnectionString
+  id: ConnectionString
+  parent: Atkins.Azure.AzureSettings
+  langs:
+  - csharp
+  - vb
+  name: ConnectionString
+  nameWithType: AzureSettings.ConnectionString
+  fullName: Atkins.Azure.AzureSettings.ConnectionString
+  type: Property
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureSettings.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: ConnectionString
+    path: ../Packages/Azure/Scripts/AzureSettings.cs
+    startLine: 40
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nA static reference to the connection string (The request we do to Azure)\n"
+  example: []
+  syntax:
+    content: public static string ConnectionString { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property ConnectionString As String
+  overload: Atkins.Azure.AzureSettings.ConnectionString*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: Atkins.Azure.AzureSettings.NewAsset(Atkins.Azure.AzureSettings)
+  commentId: M:Atkins.Azure.AzureSettings.NewAsset(Atkins.Azure.AzureSettings)
+  id: NewAsset(Atkins.Azure.AzureSettings)
+  parent: Atkins.Azure.AzureSettings
+  langs:
+  - csharp
+  - vb
+  name: NewAsset(AzureSettings)
+  nameWithType: AzureSettings.NewAsset(AzureSettings)
+  fullName: Atkins.Azure.AzureSettings.NewAsset(Atkins.Azure.AzureSettings)
+  type: Method
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureSettings.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: NewAsset
+    path: ../Packages/Azure/Scripts/AzureSettings.cs
+    startLine: 46
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nFunction setting up the Asset\n"
+  example: []
+  syntax:
+    content: protected override void NewAsset(AzureSettings asset)
+    parameters:
+    - id: asset
+      type: Atkins.Azure.AzureSettings
+      description: ''
+    content.vb: Protected Overrides Sub NewAsset(asset As AzureSettings)
+  overridden: GG.ScriptableDataAsset.ScriptableDataAsset{Atkins.Azure.AzureSettings}.NewAsset(Atkins.Azure.AzureSettings)
+  overload: Atkins.Azure.AzureSettings.NewAsset*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+references:
+- uid: Atkins.Azure
+  commentId: N:Atkins.Azure
+  name: Atkins.Azure
+  nameWithType: Atkins.Azure
+  fullName: Atkins.Azure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  parent: UnityEngine
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: UnityEngine.ScriptableObject
+  commentId: T:UnityEngine.ScriptableObject
+  parent: UnityEngine
+  isExternal: true
+  name: ScriptableObject
+  nameWithType: ScriptableObject
+  fullName: UnityEngine.ScriptableObject
+- uid: GG.ScriptableDataAsset.ScriptableDataAsset{Atkins.Azure.AzureSettings}
+  commentId: T:GG.ScriptableDataAsset.ScriptableDataAsset{Atkins.Azure.AzureSettings}
+  parent: GG.ScriptableDataAsset
+  definition: GG.ScriptableDataAsset.ScriptableDataAsset`1
+  name: ScriptableDataAsset<AzureSettings>
+  nameWithType: ScriptableDataAsset<AzureSettings>
+  fullName: GG.ScriptableDataAsset.ScriptableDataAsset<Atkins.Azure.AzureSettings>
+  nameWithType.vb: ScriptableDataAsset(Of AzureSettings)
+  fullName.vb: GG.ScriptableDataAsset.ScriptableDataAsset(Of Atkins.Azure.AzureSettings)
+  name.vb: ScriptableDataAsset(Of AzureSettings)
+  spec.csharp:
+  - uid: GG.ScriptableDataAsset.ScriptableDataAsset`1
+    name: ScriptableDataAsset
+    nameWithType: ScriptableDataAsset
+    fullName: GG.ScriptableDataAsset.ScriptableDataAsset
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Atkins.Azure.AzureSettings
+    name: AzureSettings
+    nameWithType: AzureSettings
+    fullName: Atkins.Azure.AzureSettings
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: GG.ScriptableDataAsset.ScriptableDataAsset`1
+    name: ScriptableDataAsset
+    nameWithType: ScriptableDataAsset
+    fullName: GG.ScriptableDataAsset.ScriptableDataAsset
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Atkins.Azure.AzureSettings
+    name: AzureSettings
+    nameWithType: AzureSettings
+    fullName: Atkins.Azure.AzureSettings
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: GG.ScriptableDataAsset.ScriptableDataAsset`1
+  commentId: T:GG.ScriptableDataAsset.ScriptableDataAsset`1
+  isExternal: true
+  name: ScriptableDataAsset<T>
+  nameWithType: ScriptableDataAsset<T>
+  fullName: GG.ScriptableDataAsset.ScriptableDataAsset<T>
+  nameWithType.vb: ScriptableDataAsset(Of T)
+  fullName.vb: GG.ScriptableDataAsset.ScriptableDataAsset(Of T)
+  name.vb: ScriptableDataAsset(Of T)
+  spec.csharp:
+  - uid: GG.ScriptableDataAsset.ScriptableDataAsset`1
+    name: ScriptableDataAsset
+    nameWithType: ScriptableDataAsset
+    fullName: GG.ScriptableDataAsset.ScriptableDataAsset
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: GG.ScriptableDataAsset.ScriptableDataAsset`1
+    name: ScriptableDataAsset
+    nameWithType: ScriptableDataAsset
+    fullName: GG.ScriptableDataAsset.ScriptableDataAsset
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: GG.ScriptableDataAsset
+  commentId: N:GG.ScriptableDataAsset
+  isExternal: true
+  name: GG.ScriptableDataAsset
+  nameWithType: GG.ScriptableDataAsset
+  fullName: GG.ScriptableDataAsset
+- uid: GG.ScriptableDataAsset.ScriptableDataAsset{Atkins.Azure.AzureSettings}.AssetName
+  commentId: P:GG.ScriptableDataAsset.ScriptableDataAsset{Atkins.Azure.AzureSettings}.AssetName
+  parent: GG.ScriptableDataAsset.ScriptableDataAsset{Atkins.Azure.AzureSettings}
+  definition: GG.ScriptableDataAsset.ScriptableDataAsset`1.AssetName
+  name: AssetName
+  nameWithType: ScriptableDataAsset<AzureSettings>.AssetName
+  fullName: GG.ScriptableDataAsset.ScriptableDataAsset<Atkins.Azure.AzureSettings>.AssetName
+  nameWithType.vb: ScriptableDataAsset(Of AzureSettings).AssetName
+  fullName.vb: GG.ScriptableDataAsset.ScriptableDataAsset(Of Atkins.Azure.AzureSettings).AssetName
+- uid: Atkins.Azure.AzureSettings.AssetName*
+  commentId: Overload:Atkins.Azure.AzureSettings.AssetName
+  name: AssetName
+  nameWithType: AzureSettings.AssetName
+  fullName: Atkins.Azure.AzureSettings.AssetName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: GG.ScriptableDataAsset.ScriptableDataAsset`1.AssetName
+  commentId: P:GG.ScriptableDataAsset.ScriptableDataAsset`1.AssetName
+  isExternal: true
+  name: AssetName
+  nameWithType: ScriptableDataAsset<T>.AssetName
+  fullName: GG.ScriptableDataAsset.ScriptableDataAsset<T>.AssetName
+  nameWithType.vb: ScriptableDataAsset(Of T).AssetName
+  fullName.vb: GG.ScriptableDataAsset.ScriptableDataAsset(Of T).AssetName
+- uid: Atkins.Azure.AzureSettings.ConnectionString*
+  commentId: Overload:Atkins.Azure.AzureSettings.ConnectionString
+  name: ConnectionString
+  nameWithType: AzureSettings.ConnectionString
+  fullName: Atkins.Azure.AzureSettings.ConnectionString
+- uid: GG.ScriptableDataAsset.ScriptableDataAsset{Atkins.Azure.AzureSettings}.NewAsset(Atkins.Azure.AzureSettings)
+  commentId: M:GG.ScriptableDataAsset.ScriptableDataAsset{Atkins.Azure.AzureSettings}.NewAsset(Atkins.Azure.AzureSettings)
+  parent: GG.ScriptableDataAsset.ScriptableDataAsset{Atkins.Azure.AzureSettings}
+  definition: GG.ScriptableDataAsset.ScriptableDataAsset`1.NewAsset(`0)
+  name: NewAsset(AzureSettings)
+  nameWithType: ScriptableDataAsset<AzureSettings>.NewAsset(AzureSettings)
+  fullName: GG.ScriptableDataAsset.ScriptableDataAsset<Atkins.Azure.AzureSettings>.NewAsset(Atkins.Azure.AzureSettings)
+  nameWithType.vb: ScriptableDataAsset(Of AzureSettings).NewAsset(AzureSettings)
+  fullName.vb: GG.ScriptableDataAsset.ScriptableDataAsset(Of Atkins.Azure.AzureSettings).NewAsset(Atkins.Azure.AzureSettings)
+  spec.csharp:
+  - uid: GG.ScriptableDataAsset.ScriptableDataAsset`1.NewAsset(`0)
+    name: NewAsset
+    nameWithType: ScriptableDataAsset<AzureSettings>.NewAsset
+    fullName: GG.ScriptableDataAsset.ScriptableDataAsset<Atkins.Azure.AzureSettings>.NewAsset
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Atkins.Azure.AzureSettings
+    name: AzureSettings
+    nameWithType: AzureSettings
+    fullName: Atkins.Azure.AzureSettings
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: GG.ScriptableDataAsset.ScriptableDataAsset`1.NewAsset(`0)
+    name: NewAsset
+    nameWithType: ScriptableDataAsset(Of AzureSettings).NewAsset
+    fullName: GG.ScriptableDataAsset.ScriptableDataAsset(Of Atkins.Azure.AzureSettings).NewAsset
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: Atkins.Azure.AzureSettings
+    name: AzureSettings
+    nameWithType: AzureSettings
+    fullName: Atkins.Azure.AzureSettings
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Atkins.Azure.AzureSettings.NewAsset*
+  commentId: Overload:Atkins.Azure.AzureSettings.NewAsset
+  name: NewAsset
+  nameWithType: AzureSettings.NewAsset
+  fullName: Atkins.Azure.AzureSettings.NewAsset
+- uid: Atkins.Azure.AzureSettings
+  commentId: T:Atkins.Azure.AzureSettings
+  parent: Atkins.Azure
+  name: AzureSettings
+  nameWithType: AzureSettings
+  fullName: Atkins.Azure.AzureSettings
+- uid: GG.ScriptableDataAsset.ScriptableDataAsset`1.NewAsset(`0)
+  commentId: M:GG.ScriptableDataAsset.ScriptableDataAsset`1.NewAsset(`0)
+  isExternal: true
+  name: NewAsset(T)
+  nameWithType: ScriptableDataAsset<T>.NewAsset(T)
+  fullName: GG.ScriptableDataAsset.ScriptableDataAsset<T>.NewAsset(T)
+  nameWithType.vb: ScriptableDataAsset(Of T).NewAsset(T)
+  fullName.vb: GG.ScriptableDataAsset.ScriptableDataAsset(Of T).NewAsset(T)
+  spec.csharp:
+  - uid: GG.ScriptableDataAsset.ScriptableDataAsset`1.NewAsset(`0)
+    name: NewAsset
+    nameWithType: ScriptableDataAsset<T>.NewAsset
+    fullName: GG.ScriptableDataAsset.ScriptableDataAsset<T>.NewAsset
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: GG.ScriptableDataAsset.ScriptableDataAsset`1.NewAsset(`0)
+    name: NewAsset
+    nameWithType: ScriptableDataAsset(Of T).NewAsset
+    fullName: GG.ScriptableDataAsset.ScriptableDataAsset(Of T).NewAsset
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )

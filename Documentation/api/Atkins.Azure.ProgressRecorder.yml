@@ -1,0 +1,506 @@
+### YamlMime:ManagedReference
+items:
+- uid: Atkins.Azure.ProgressRecorder
+  commentId: T:Atkins.Azure.ProgressRecorder
+  id: ProgressRecorder
+  parent: Atkins.Azure
+  children:
+  - Atkins.Azure.ProgressRecorder.#ctor(System.String,Microsoft.Azure.Storage.Blob.CloudBlob)
+  - Atkins.Azure.ProgressRecorder.#ctor(System.String,System.Int64)
+  - Atkins.Azure.ProgressRecorder.ProgressPercentage
+  - Atkins.Azure.ProgressRecorder.Report(Microsoft.Azure.Storage.DataMovement.TransferStatus)
+  - Atkins.Azure.ProgressRecorder.TimeRemaining
+  - Atkins.Azure.ProgressRecorder.ToString
+  - Atkins.Azure.ProgressRecorder.updateCallback
+  langs:
+  - csharp
+  - vb
+  name: ProgressRecorder
+  nameWithType: ProgressRecorder
+  fullName: Atkins.Azure.ProgressRecorder
+  type: Class
+  source:
+    remote:
+      path: Packages/Azure/Scripts/ProgressRecorder.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: ProgressRecorder
+    path: ../Packages/Azure/Scripts/ProgressRecorder.cs
+    startLine: 12
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nA helper class to record progress reported by data movement library.\n"
+  example: []
+  syntax:
+    content: 'public class ProgressRecorder : IProgress<TransferStatus>'
+    content.vb: >-
+      Public Class ProgressRecorder
+          Implements IProgress(Of TransferStatus)
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Atkins.Azure.ProgressRecorder.updateCallback
+  commentId: F:Atkins.Azure.ProgressRecorder.updateCallback
+  id: updateCallback
+  parent: Atkins.Azure.ProgressRecorder
+  langs:
+  - csharp
+  - vb
+  name: updateCallback
+  nameWithType: ProgressRecorder.updateCallback
+  fullName: Atkins.Azure.ProgressRecorder.updateCallback
+  type: Field
+  source:
+    remote:
+      path: Packages/Azure/Scripts/ProgressRecorder.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: updateCallback
+    path: ../Packages/Azure/Scripts/ProgressRecorder.cs
+    startLine: 26
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  syntax:
+    content: public Action<ProgressRecorder> updateCallback
+    return:
+      type: System.Action{Atkins.Azure.ProgressRecorder}
+    content.vb: Public updateCallback As Action(Of ProgressRecorder)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Atkins.Azure.ProgressRecorder.#ctor(System.String,Microsoft.Azure.Storage.Blob.CloudBlob)
+  commentId: M:Atkins.Azure.ProgressRecorder.#ctor(System.String,Microsoft.Azure.Storage.Blob.CloudBlob)
+  id: '#ctor(System.String,Microsoft.Azure.Storage.Blob.CloudBlob)'
+  parent: Atkins.Azure.ProgressRecorder
+  langs:
+  - csharp
+  - vb
+  name: ProgressRecorder(String, CloudBlob)
+  nameWithType: ProgressRecorder.ProgressRecorder(String, CloudBlob)
+  fullName: Atkins.Azure.ProgressRecorder.ProgressRecorder(System.String, Microsoft.Azure.Storage.Blob.CloudBlob)
+  type: Constructor
+  source:
+    remote:
+      path: Packages/Azure/Scripts/ProgressRecorder.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: .ctor
+    path: ../Packages/Azure/Scripts/ProgressRecorder.cs
+    startLine: 33
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nA very basic constructor\n"
+  example: []
+  syntax:
+    content: public ProgressRecorder(string fileId, CloudBlob cloudBlob)
+    parameters:
+    - id: fileId
+      type: System.String
+      description: ''
+    - id: cloudBlob
+      type: Microsoft.Azure.Storage.Blob.CloudBlob
+      description: ''
+    content.vb: Public Sub New(fileId As String, cloudBlob As CloudBlob)
+  overload: Atkins.Azure.ProgressRecorder.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Atkins.Azure.ProgressRecorder.#ctor(System.String,System.Int64)
+  commentId: M:Atkins.Azure.ProgressRecorder.#ctor(System.String,System.Int64)
+  id: '#ctor(System.String,System.Int64)'
+  parent: Atkins.Azure.ProgressRecorder
+  langs:
+  - csharp
+  - vb
+  name: ProgressRecorder(String, Int64)
+  nameWithType: ProgressRecorder.ProgressRecorder(String, Int64)
+  fullName: Atkins.Azure.ProgressRecorder.ProgressRecorder(System.String, System.Int64)
+  type: Constructor
+  source:
+    remote:
+      path: Packages/Azure/Scripts/ProgressRecorder.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: .ctor
+    path: ../Packages/Azure/Scripts/ProgressRecorder.cs
+    startLine: 44
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nA very basic constructor\n"
+  example: []
+  syntax:
+    content: public ProgressRecorder(string fileId, long size)
+    parameters:
+    - id: fileId
+      type: System.String
+      description: ''
+    - id: size
+      type: System.Int64
+      description: ''
+    content.vb: Public Sub New(fileId As String, size As Long)
+  overload: Atkins.Azure.ProgressRecorder.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Atkins.Azure.ProgressRecorder.ProgressPercentage
+  commentId: P:Atkins.Azure.ProgressRecorder.ProgressPercentage
+  id: ProgressPercentage
+  parent: Atkins.Azure.ProgressRecorder
+  langs:
+  - csharp
+  - vb
+  name: ProgressPercentage
+  nameWithType: ProgressRecorder.ProgressPercentage
+  fullName: Atkins.Azure.ProgressRecorder.ProgressPercentage
+  type: Property
+  source:
+    remote:
+      path: Packages/Azure/Scripts/ProgressRecorder.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: ProgressPercentage
+    path: ../Packages/Azure/Scripts/ProgressRecorder.cs
+    startLine: 58
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nReturns the current percentage of the download between 0-100\n"
+  example: []
+  syntax:
+    content: public int ProgressPercentage { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property ProgressPercentage As Integer
+  overload: Atkins.Azure.ProgressRecorder.ProgressPercentage*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Atkins.Azure.ProgressRecorder.TimeRemaining
+  commentId: P:Atkins.Azure.ProgressRecorder.TimeRemaining
+  id: TimeRemaining
+  parent: Atkins.Azure.ProgressRecorder
+  langs:
+  - csharp
+  - vb
+  name: TimeRemaining
+  nameWithType: ProgressRecorder.TimeRemaining
+  fullName: Atkins.Azure.ProgressRecorder.TimeRemaining
+  type: Property
+  source:
+    remote:
+      path: Packages/Azure/Scripts/ProgressRecorder.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: TimeRemaining
+    path: ../Packages/Azure/Scripts/ProgressRecorder.cs
+    startLine: 60
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  syntax:
+    content: public TimeSpan TimeRemaining { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: Public ReadOnly Property TimeRemaining As TimeSpan
+  overload: Atkins.Azure.ProgressRecorder.TimeRemaining*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Atkins.Azure.ProgressRecorder.Report(Microsoft.Azure.Storage.DataMovement.TransferStatus)
+  commentId: M:Atkins.Azure.ProgressRecorder.Report(Microsoft.Azure.Storage.DataMovement.TransferStatus)
+  id: Report(Microsoft.Azure.Storage.DataMovement.TransferStatus)
+  parent: Atkins.Azure.ProgressRecorder
+  langs:
+  - csharp
+  - vb
+  name: Report(TransferStatus)
+  nameWithType: ProgressRecorder.Report(TransferStatus)
+  fullName: Atkins.Azure.ProgressRecorder.Report(Microsoft.Azure.Storage.DataMovement.TransferStatus)
+  type: Method
+  source:
+    remote:
+      path: Packages/Azure/Scripts/ProgressRecorder.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: Report
+    path: ../Packages/Azure/Scripts/ProgressRecorder.cs
+    startLine: 69
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  syntax:
+    content: public void Report(TransferStatus progress)
+    parameters:
+    - id: progress
+      type: Microsoft.Azure.Storage.DataMovement.TransferStatus
+    content.vb: Public Sub Report(progress As TransferStatus)
+  overload: Atkins.Azure.ProgressRecorder.Report*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Atkins.Azure.ProgressRecorder.ToString
+  commentId: M:Atkins.Azure.ProgressRecorder.ToString
+  id: ToString
+  parent: Atkins.Azure.ProgressRecorder
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: ProgressRecorder.ToString()
+  fullName: Atkins.Azure.ProgressRecorder.ToString()
+  type: Method
+  source:
+    remote:
+      path: Packages/Azure/Scripts/ProgressRecorder.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: ToString
+    path: ../Packages/Azure/Scripts/ProgressRecorder.cs
+    startLine: 80
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString As String
+  overridden: System.Object.ToString
+  overload: Atkins.Azure.ProgressRecorder.ToString*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: Atkins.Azure
+  commentId: N:Atkins.Azure
+  name: Atkins.Azure
+  nameWithType: Atkins.Azure
+  fullName: Atkins.Azure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Action{Atkins.Azure.ProgressRecorder}
+  commentId: T:System.Action{Atkins.Azure.ProgressRecorder}
+  parent: System
+  definition: System.Action`1
+  name: Action<ProgressRecorder>
+  nameWithType: Action<ProgressRecorder>
+  fullName: System.Action<Atkins.Azure.ProgressRecorder>
+  nameWithType.vb: Action(Of ProgressRecorder)
+  fullName.vb: System.Action(Of Atkins.Azure.ProgressRecorder)
+  name.vb: Action(Of ProgressRecorder)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Atkins.Azure.ProgressRecorder
+    name: ProgressRecorder
+    nameWithType: ProgressRecorder
+    fullName: Atkins.Azure.ProgressRecorder
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Atkins.Azure.ProgressRecorder
+    name: ProgressRecorder
+    nameWithType: ProgressRecorder
+    fullName: Atkins.Azure.ProgressRecorder
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Atkins.Azure.ProgressRecorder.#ctor*
+  commentId: Overload:Atkins.Azure.ProgressRecorder.#ctor
+  name: ProgressRecorder
+  nameWithType: ProgressRecorder.ProgressRecorder
+  fullName: Atkins.Azure.ProgressRecorder.ProgressRecorder
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Microsoft.Azure.Storage.Blob.CloudBlob
+  commentId: T:Microsoft.Azure.Storage.Blob.CloudBlob
+  parent: Microsoft.Azure.Storage.Blob
+  isExternal: true
+  name: CloudBlob
+  nameWithType: CloudBlob
+  fullName: Microsoft.Azure.Storage.Blob.CloudBlob
+- uid: Microsoft.Azure.Storage.Blob
+  commentId: N:Microsoft.Azure.Storage.Blob
+  isExternal: true
+  name: Microsoft.Azure.Storage.Blob
+  nameWithType: Microsoft.Azure.Storage.Blob
+  fullName: Microsoft.Azure.Storage.Blob
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  name: Int64
+  nameWithType: Int64
+  fullName: System.Int64
+- uid: Atkins.Azure.ProgressRecorder.ProgressPercentage*
+  commentId: Overload:Atkins.Azure.ProgressRecorder.ProgressPercentage
+  name: ProgressPercentage
+  nameWithType: ProgressRecorder.ProgressPercentage
+  fullName: Atkins.Azure.ProgressRecorder.ProgressPercentage
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Atkins.Azure.ProgressRecorder.TimeRemaining*
+  commentId: Overload:Atkins.Azure.ProgressRecorder.TimeRemaining
+  name: TimeRemaining
+  nameWithType: ProgressRecorder.TimeRemaining
+  fullName: Atkins.Azure.ProgressRecorder.TimeRemaining
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: Atkins.Azure.ProgressRecorder.Report*
+  commentId: Overload:Atkins.Azure.ProgressRecorder.Report
+  name: Report
+  nameWithType: ProgressRecorder.Report
+  fullName: Atkins.Azure.ProgressRecorder.Report
+- uid: Microsoft.Azure.Storage.DataMovement.TransferStatus
+  commentId: T:Microsoft.Azure.Storage.DataMovement.TransferStatus
+  parent: Microsoft.Azure.Storage.DataMovement
+  isExternal: true
+  name: TransferStatus
+  nameWithType: TransferStatus
+  fullName: Microsoft.Azure.Storage.DataMovement.TransferStatus
+- uid: Microsoft.Azure.Storage.DataMovement
+  commentId: N:Microsoft.Azure.Storage.DataMovement
+  isExternal: true
+  name: Microsoft.Azure.Storage.DataMovement
+  nameWithType: Microsoft.Azure.Storage.DataMovement
+  fullName: Microsoft.Azure.Storage.DataMovement
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  name: ToString()
+  nameWithType: Object.ToString()
+  fullName: System.Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    nameWithType: Object.ToString
+    fullName: System.Object.ToString
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Atkins.Azure.ProgressRecorder.ToString*
+  commentId: Overload:Atkins.Azure.ProgressRecorder.ToString
+  name: ToString
+  nameWithType: ProgressRecorder.ToString
+  fullName: Atkins.Azure.ProgressRecorder.ToString

@@ -1,0 +1,333 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: Atkins.Azure
+  name: Atkins.Azure
+  href: api/Atkins.Azure.html
+  commentId: N:Atkins.Azure
+  fullName: Atkins.Azure
+  nameWithType: Atkins.Azure
+- uid: Atkins.Azure.AzureFileStorage
+  name: AzureFileStorage
+  href: api/Atkins.Azure.AzureFileStorage.html
+  commentId: T:Atkins.Azure.AzureFileStorage
+  fullName: Atkins.Azure.AzureFileStorage
+  nameWithType: AzureFileStorage
+- uid: Atkins.Azure.AzureFileStorage.BlobType
+  name: AzureFileStorage.BlobType
+  href: api/Atkins.Azure.AzureFileStorage.BlobType.html
+  commentId: T:Atkins.Azure.AzureFileStorage.BlobType
+  fullName: Atkins.Azure.AzureFileStorage.BlobType
+  nameWithType: AzureFileStorage.BlobType
+- uid: Atkins.Azure.AzureFileStorage.BlobType.APPEND
+  name: APPEND
+  href: api/Atkins.Azure.AzureFileStorage.BlobType.html#Atkins_Azure_AzureFileStorage_BlobType_APPEND
+  commentId: F:Atkins.Azure.AzureFileStorage.BlobType.APPEND
+  fullName: Atkins.Azure.AzureFileStorage.BlobType.APPEND
+  nameWithType: AzureFileStorage.BlobType.APPEND
+- uid: Atkins.Azure.AzureFileStorage.BlobType.BLOCK
+  name: BLOCK
+  href: api/Atkins.Azure.AzureFileStorage.BlobType.html#Atkins_Azure_AzureFileStorage_BlobType_BLOCK
+  commentId: F:Atkins.Azure.AzureFileStorage.BlobType.BLOCK
+  fullName: Atkins.Azure.AzureFileStorage.BlobType.BLOCK
+  nameWithType: AzureFileStorage.BlobType.BLOCK
+- uid: Atkins.Azure.AzureFileStorage.BlobType.PAGE
+  name: PAGE
+  href: api/Atkins.Azure.AzureFileStorage.BlobType.html#Atkins_Azure_AzureFileStorage_BlobType_PAGE
+  commentId: F:Atkins.Azure.AzureFileStorage.BlobType.PAGE
+  fullName: Atkins.Azure.AzureFileStorage.BlobType.PAGE
+  nameWithType: AzureFileStorage.BlobType.PAGE
+- uid: Atkins.Azure.AzureFileStorage.CheckFileSize(System.String,System.String)
+  name: CheckFileSize(String, String)
+  href: api/Atkins.Azure.AzureFileStorage.html#Atkins_Azure_AzureFileStorage_CheckFileSize_System_String_System_String_
+  commentId: M:Atkins.Azure.AzureFileStorage.CheckFileSize(System.String,System.String)
+  fullName: Atkins.Azure.AzureFileStorage.CheckFileSize(System.String, System.String)
+  nameWithType: AzureFileStorage.CheckFileSize(String, String)
+- uid: Atkins.Azure.AzureFileStorage.CheckFileSize*
+  name: CheckFileSize
+  href: api/Atkins.Azure.AzureFileStorage.html#Atkins_Azure_AzureFileStorage_CheckFileSize_
+  commentId: Overload:Atkins.Azure.AzureFileStorage.CheckFileSize
+  isSpec: "True"
+  fullName: Atkins.Azure.AzureFileStorage.CheckFileSize
+  nameWithType: AzureFileStorage.CheckFileSize
+- uid: Atkins.Azure.AzureFileStorage.DeleteFile(System.String,System.String)
+  name: DeleteFile(String, String)
+  href: api/Atkins.Azure.AzureFileStorage.html#Atkins_Azure_AzureFileStorage_DeleteFile_System_String_System_String_
+  commentId: M:Atkins.Azure.AzureFileStorage.DeleteFile(System.String,System.String)
+  fullName: Atkins.Azure.AzureFileStorage.DeleteFile(System.String, System.String)
+  nameWithType: AzureFileStorage.DeleteFile(String, String)
+- uid: Atkins.Azure.AzureFileStorage.DeleteFile*
+  name: DeleteFile
+  href: api/Atkins.Azure.AzureFileStorage.html#Atkins_Azure_AzureFileStorage_DeleteFile_
+  commentId: Overload:Atkins.Azure.AzureFileStorage.DeleteFile
+  isSpec: "True"
+  fullName: Atkins.Azure.AzureFileStorage.DeleteFile
+  nameWithType: AzureFileStorage.DeleteFile
+- uid: Atkins.Azure.AzureFileStorage.DownloadFile(System.String,System.String,System.String,System.Action{Atkins.Azure.ProgressRecorder},System.Int32,System.Int32)
+  name: DownloadFile(String, String, String, Action<ProgressRecorder>, Int32, Int32)
+  href: api/Atkins.Azure.AzureFileStorage.html#Atkins_Azure_AzureFileStorage_DownloadFile_System_String_System_String_System_String_System_Action_Atkins_Azure_ProgressRecorder__System_Int32_System_Int32_
+  commentId: M:Atkins.Azure.AzureFileStorage.DownloadFile(System.String,System.String,System.String,System.Action{Atkins.Azure.ProgressRecorder},System.Int32,System.Int32)
+  name.vb: DownloadFile(String, String, String, Action(Of ProgressRecorder), Int32, Int32)
+  fullName: Atkins.Azure.AzureFileStorage.DownloadFile(System.String, System.String, System.String, System.Action<Atkins.Azure.ProgressRecorder>, System.Int32, System.Int32)
+  fullName.vb: Atkins.Azure.AzureFileStorage.DownloadFile(System.String, System.String, System.String, System.Action(Of Atkins.Azure.ProgressRecorder), System.Int32, System.Int32)
+  nameWithType: AzureFileStorage.DownloadFile(String, String, String, Action<ProgressRecorder>, Int32, Int32)
+  nameWithType.vb: AzureFileStorage.DownloadFile(String, String, String, Action(Of ProgressRecorder), Int32, Int32)
+- uid: Atkins.Azure.AzureFileStorage.DownloadFile*
+  name: DownloadFile
+  href: api/Atkins.Azure.AzureFileStorage.html#Atkins_Azure_AzureFileStorage_DownloadFile_
+  commentId: Overload:Atkins.Azure.AzureFileStorage.DownloadFile
+  isSpec: "True"
+  fullName: Atkins.Azure.AzureFileStorage.DownloadFile
+  nameWithType: AzureFileStorage.DownloadFile
+- uid: Atkins.Azure.AzureFileStorage.GetContainer(System.String)
+  name: GetContainer(String)
+  href: api/Atkins.Azure.AzureFileStorage.html#Atkins_Azure_AzureFileStorage_GetContainer_System_String_
+  commentId: M:Atkins.Azure.AzureFileStorage.GetContainer(System.String)
+  fullName: Atkins.Azure.AzureFileStorage.GetContainer(System.String)
+  nameWithType: AzureFileStorage.GetContainer(String)
+- uid: Atkins.Azure.AzureFileStorage.GetContainer*
+  name: GetContainer
+  href: api/Atkins.Azure.AzureFileStorage.html#Atkins_Azure_AzureFileStorage_GetContainer_
+  commentId: Overload:Atkins.Azure.AzureFileStorage.GetContainer
+  isSpec: "True"
+  fullName: Atkins.Azure.AzureFileStorage.GetContainer
+  nameWithType: AzureFileStorage.GetContainer
+- uid: Atkins.Azure.AzureFileStorage.GetFileProperties(System.String,System.String)
+  name: GetFileProperties(String, String)
+  href: api/Atkins.Azure.AzureFileStorage.html#Atkins_Azure_AzureFileStorage_GetFileProperties_System_String_System_String_
+  commentId: M:Atkins.Azure.AzureFileStorage.GetFileProperties(System.String,System.String)
+  fullName: Atkins.Azure.AzureFileStorage.GetFileProperties(System.String, System.String)
+  nameWithType: AzureFileStorage.GetFileProperties(String, String)
+- uid: Atkins.Azure.AzureFileStorage.GetFileProperties*
+  name: GetFileProperties
+  href: api/Atkins.Azure.AzureFileStorage.html#Atkins_Azure_AzureFileStorage_GetFileProperties_
+  commentId: Overload:Atkins.Azure.AzureFileStorage.GetFileProperties
+  isSpec: "True"
+  fullName: Atkins.Azure.AzureFileStorage.GetFileProperties
+  nameWithType: AzureFileStorage.GetFileProperties
+- uid: Atkins.Azure.AzureFileStorage.LastModifiedAsync(System.String,System.String)
+  name: LastModifiedAsync(String, String)
+  href: api/Atkins.Azure.AzureFileStorage.html#Atkins_Azure_AzureFileStorage_LastModifiedAsync_System_String_System_String_
+  commentId: M:Atkins.Azure.AzureFileStorage.LastModifiedAsync(System.String,System.String)
+  fullName: Atkins.Azure.AzureFileStorage.LastModifiedAsync(System.String, System.String)
+  nameWithType: AzureFileStorage.LastModifiedAsync(String, String)
+- uid: Atkins.Azure.AzureFileStorage.LastModifiedAsync*
+  name: LastModifiedAsync
+  href: api/Atkins.Azure.AzureFileStorage.html#Atkins_Azure_AzureFileStorage_LastModifiedAsync_
+  commentId: Overload:Atkins.Azure.AzureFileStorage.LastModifiedAsync
+  isSpec: "True"
+  fullName: Atkins.Azure.AzureFileStorage.LastModifiedAsync
+  nameWithType: AzureFileStorage.LastModifiedAsync
+- uid: Atkins.Azure.AzureFileStorage.UploadFile(System.String,System.String,System.String,System.Threading.CancellationToken,Atkins.Azure.AzureFileStorage.BlobType,System.Action{Atkins.Azure.ProgressRecorder},System.Int32)
+  name: UploadFile(String, String, String, CancellationToken, AzureFileStorage.BlobType, Action<ProgressRecorder>, Int32)
+  href: api/Atkins.Azure.AzureFileStorage.html#Atkins_Azure_AzureFileStorage_UploadFile_System_String_System_String_System_String_System_Threading_CancellationToken_Atkins_Azure_AzureFileStorage_BlobType_System_Action_Atkins_Azure_ProgressRecorder__System_Int32_
+  commentId: M:Atkins.Azure.AzureFileStorage.UploadFile(System.String,System.String,System.String,System.Threading.CancellationToken,Atkins.Azure.AzureFileStorage.BlobType,System.Action{Atkins.Azure.ProgressRecorder},System.Int32)
+  name.vb: UploadFile(String, String, String, CancellationToken, AzureFileStorage.BlobType, Action(Of ProgressRecorder), Int32)
+  fullName: Atkins.Azure.AzureFileStorage.UploadFile(System.String, System.String, System.String, System.Threading.CancellationToken, Atkins.Azure.AzureFileStorage.BlobType, System.Action<Atkins.Azure.ProgressRecorder>, System.Int32)
+  fullName.vb: Atkins.Azure.AzureFileStorage.UploadFile(System.String, System.String, System.String, System.Threading.CancellationToken, Atkins.Azure.AzureFileStorage.BlobType, System.Action(Of Atkins.Azure.ProgressRecorder), System.Int32)
+  nameWithType: AzureFileStorage.UploadFile(String, String, String, CancellationToken, AzureFileStorage.BlobType, Action<ProgressRecorder>, Int32)
+  nameWithType.vb: AzureFileStorage.UploadFile(String, String, String, CancellationToken, AzureFileStorage.BlobType, Action(Of ProgressRecorder), Int32)
+- uid: Atkins.Azure.AzureFileStorage.UploadFile*
+  name: UploadFile
+  href: api/Atkins.Azure.AzureFileStorage.html#Atkins_Azure_AzureFileStorage_UploadFile_
+  commentId: Overload:Atkins.Azure.AzureFileStorage.UploadFile
+  isSpec: "True"
+  fullName: Atkins.Azure.AzureFileStorage.UploadFile
+  nameWithType: AzureFileStorage.UploadFile
+- uid: Atkins.Azure.AzureImages
+  name: AzureImages
+  href: api/Atkins.Azure.AzureImages.html
+  commentId: T:Atkins.Azure.AzureImages
+  fullName: Atkins.Azure.AzureImages
+  nameWithType: AzureImages
+- uid: Atkins.Azure.AzureImages.ContainerName
+  name: ContainerName
+  href: api/Atkins.Azure.AzureImages.html#Atkins_Azure_AzureImages_ContainerName
+  commentId: F:Atkins.Azure.AzureImages.ContainerName
+  fullName: Atkins.Azure.AzureImages.ContainerName
+  nameWithType: AzureImages.ContainerName
+- uid: Atkins.Azure.AzureImages.DeleteImage(System.String)
+  name: DeleteImage(String)
+  href: api/Atkins.Azure.AzureImages.html#Atkins_Azure_AzureImages_DeleteImage_System_String_
+  commentId: M:Atkins.Azure.AzureImages.DeleteImage(System.String)
+  fullName: Atkins.Azure.AzureImages.DeleteImage(System.String)
+  nameWithType: AzureImages.DeleteImage(String)
+- uid: Atkins.Azure.AzureImages.DeleteImage*
+  name: DeleteImage
+  href: api/Atkins.Azure.AzureImages.html#Atkins_Azure_AzureImages_DeleteImage_
+  commentId: Overload:Atkins.Azure.AzureImages.DeleteImage
+  isSpec: "True"
+  fullName: Atkins.Azure.AzureImages.DeleteImage
+  nameWithType: AzureImages.DeleteImage
+- uid: Atkins.Azure.AzureImages.FileFormat
+  name: FileFormat
+  href: api/Atkins.Azure.AzureImages.html#Atkins_Azure_AzureImages_FileFormat
+  commentId: F:Atkins.Azure.AzureImages.FileFormat
+  fullName: Atkins.Azure.AzureImages.FileFormat
+  nameWithType: AzureImages.FileFormat
+- uid: Atkins.Azure.AzureImages.FolderName
+  name: FolderName
+  href: api/Atkins.Azure.AzureImages.html#Atkins_Azure_AzureImages_FolderName
+  commentId: F:Atkins.Azure.AzureImages.FolderName
+  fullName: Atkins.Azure.AzureImages.FolderName
+  nameWithType: AzureImages.FolderName
+- uid: Atkins.Azure.AzureImages.GetCachedImage(System.String,System.Int32)
+  name: GetCachedImage(String, Int32)
+  href: api/Atkins.Azure.AzureImages.html#Atkins_Azure_AzureImages_GetCachedImage_System_String_System_Int32_
+  commentId: M:Atkins.Azure.AzureImages.GetCachedImage(System.String,System.Int32)
+  fullName: Atkins.Azure.AzureImages.GetCachedImage(System.String, System.Int32)
+  nameWithType: AzureImages.GetCachedImage(String, Int32)
+- uid: Atkins.Azure.AzureImages.GetCachedImage*
+  name: GetCachedImage
+  href: api/Atkins.Azure.AzureImages.html#Atkins_Azure_AzureImages_GetCachedImage_
+  commentId: Overload:Atkins.Azure.AzureImages.GetCachedImage
+  isSpec: "True"
+  fullName: Atkins.Azure.AzureImages.GetCachedImage
+  nameWithType: AzureImages.GetCachedImage
+- uid: Atkins.Azure.AzureImages.UploadImage(System.String)
+  name: UploadImage(String)
+  href: api/Atkins.Azure.AzureImages.html#Atkins_Azure_AzureImages_UploadImage_System_String_
+  commentId: M:Atkins.Azure.AzureImages.UploadImage(System.String)
+  fullName: Atkins.Azure.AzureImages.UploadImage(System.String)
+  nameWithType: AzureImages.UploadImage(String)
+- uid: Atkins.Azure.AzureImages.UploadImage*
+  name: UploadImage
+  href: api/Atkins.Azure.AzureImages.html#Atkins_Azure_AzureImages_UploadImage_
+  commentId: Overload:Atkins.Azure.AzureImages.UploadImage
+  isSpec: "True"
+  fullName: Atkins.Azure.AzureImages.UploadImage
+  nameWithType: AzureImages.UploadImage
+- uid: Atkins.Azure.AzureSettings
+  name: AzureSettings
+  href: api/Atkins.Azure.AzureSettings.html
+  commentId: T:Atkins.Azure.AzureSettings
+  fullName: Atkins.Azure.AzureSettings
+  nameWithType: AzureSettings
+- uid: Atkins.Azure.AzureSettings.AssetName
+  name: AssetName
+  href: api/Atkins.Azure.AzureSettings.html#Atkins_Azure_AzureSettings_AssetName
+  commentId: P:Atkins.Azure.AzureSettings.AssetName
+  fullName: Atkins.Azure.AzureSettings.AssetName
+  nameWithType: AzureSettings.AssetName
+- uid: Atkins.Azure.AzureSettings.AssetName*
+  name: AssetName
+  href: api/Atkins.Azure.AzureSettings.html#Atkins_Azure_AzureSettings_AssetName_
+  commentId: Overload:Atkins.Azure.AzureSettings.AssetName
+  isSpec: "True"
+  fullName: Atkins.Azure.AzureSettings.AssetName
+  nameWithType: AzureSettings.AssetName
+- uid: Atkins.Azure.AzureSettings.connectionString
+  name: connectionString
+  href: api/Atkins.Azure.AzureSettings.html#Atkins_Azure_AzureSettings_connectionString
+  commentId: F:Atkins.Azure.AzureSettings.connectionString
+  fullName: Atkins.Azure.AzureSettings.connectionString
+  nameWithType: AzureSettings.connectionString
+- uid: Atkins.Azure.AzureSettings.ConnectionString
+  name: ConnectionString
+  href: api/Atkins.Azure.AzureSettings.html#Atkins_Azure_AzureSettings_ConnectionString
+  commentId: P:Atkins.Azure.AzureSettings.ConnectionString
+  fullName: Atkins.Azure.AzureSettings.ConnectionString
+  nameWithType: AzureSettings.ConnectionString
+- uid: Atkins.Azure.AzureSettings.ConnectionString*
+  name: ConnectionString
+  href: api/Atkins.Azure.AzureSettings.html#Atkins_Azure_AzureSettings_ConnectionString_
+  commentId: Overload:Atkins.Azure.AzureSettings.ConnectionString
+  isSpec: "True"
+  fullName: Atkins.Azure.AzureSettings.ConnectionString
+  nameWithType: AzureSettings.ConnectionString
+- uid: Atkins.Azure.AzureSettings.NewAsset(Atkins.Azure.AzureSettings)
+  name: NewAsset(AzureSettings)
+  href: api/Atkins.Azure.AzureSettings.html#Atkins_Azure_AzureSettings_NewAsset_Atkins_Azure_AzureSettings_
+  commentId: M:Atkins.Azure.AzureSettings.NewAsset(Atkins.Azure.AzureSettings)
+  fullName: Atkins.Azure.AzureSettings.NewAsset(Atkins.Azure.AzureSettings)
+  nameWithType: AzureSettings.NewAsset(AzureSettings)
+- uid: Atkins.Azure.AzureSettings.NewAsset*
+  name: NewAsset
+  href: api/Atkins.Azure.AzureSettings.html#Atkins_Azure_AzureSettings_NewAsset_
+  commentId: Overload:Atkins.Azure.AzureSettings.NewAsset
+  isSpec: "True"
+  fullName: Atkins.Azure.AzureSettings.NewAsset
+  nameWithType: AzureSettings.NewAsset
+- uid: Atkins.Azure.ProgressRecorder
+  name: ProgressRecorder
+  href: api/Atkins.Azure.ProgressRecorder.html
+  commentId: T:Atkins.Azure.ProgressRecorder
+  fullName: Atkins.Azure.ProgressRecorder
+  nameWithType: ProgressRecorder
+- uid: Atkins.Azure.ProgressRecorder.#ctor(System.String,Microsoft.Azure.Storage.Blob.CloudBlob)
+  name: ProgressRecorder(String, CloudBlob)
+  href: api/Atkins.Azure.ProgressRecorder.html#Atkins_Azure_ProgressRecorder__ctor_System_String_Microsoft_Azure_Storage_Blob_CloudBlob_
+  commentId: M:Atkins.Azure.ProgressRecorder.#ctor(System.String,Microsoft.Azure.Storage.Blob.CloudBlob)
+  fullName: Atkins.Azure.ProgressRecorder.ProgressRecorder(System.String, Microsoft.Azure.Storage.Blob.CloudBlob)
+  nameWithType: ProgressRecorder.ProgressRecorder(String, CloudBlob)
+- uid: Atkins.Azure.ProgressRecorder.#ctor(System.String,System.Int64)
+  name: ProgressRecorder(String, Int64)
+  href: api/Atkins.Azure.ProgressRecorder.html#Atkins_Azure_ProgressRecorder__ctor_System_String_System_Int64_
+  commentId: M:Atkins.Azure.ProgressRecorder.#ctor(System.String,System.Int64)
+  fullName: Atkins.Azure.ProgressRecorder.ProgressRecorder(System.String, System.Int64)
+  nameWithType: ProgressRecorder.ProgressRecorder(String, Int64)
+- uid: Atkins.Azure.ProgressRecorder.#ctor*
+  name: ProgressRecorder
+  href: api/Atkins.Azure.ProgressRecorder.html#Atkins_Azure_ProgressRecorder__ctor_
+  commentId: Overload:Atkins.Azure.ProgressRecorder.#ctor
+  isSpec: "True"
+  fullName: Atkins.Azure.ProgressRecorder.ProgressRecorder
+  nameWithType: ProgressRecorder.ProgressRecorder
+- uid: Atkins.Azure.ProgressRecorder.ProgressPercentage
+  name: ProgressPercentage
+  href: api/Atkins.Azure.ProgressRecorder.html#Atkins_Azure_ProgressRecorder_ProgressPercentage
+  commentId: P:Atkins.Azure.ProgressRecorder.ProgressPercentage
+  fullName: Atkins.Azure.ProgressRecorder.ProgressPercentage
+  nameWithType: ProgressRecorder.ProgressPercentage
+- uid: Atkins.Azure.ProgressRecorder.ProgressPercentage*
+  name: ProgressPercentage
+  href: api/Atkins.Azure.ProgressRecorder.html#Atkins_Azure_ProgressRecorder_ProgressPercentage_
+  commentId: Overload:Atkins.Azure.ProgressRecorder.ProgressPercentage
+  isSpec: "True"
+  fullName: Atkins.Azure.ProgressRecorder.ProgressPercentage
+  nameWithType: ProgressRecorder.ProgressPercentage
+- uid: Atkins.Azure.ProgressRecorder.Report(Microsoft.Azure.Storage.DataMovement.TransferStatus)
+  name: Report(TransferStatus)
+  href: api/Atkins.Azure.ProgressRecorder.html#Atkins_Azure_ProgressRecorder_Report_Microsoft_Azure_Storage_DataMovement_TransferStatus_
+  commentId: M:Atkins.Azure.ProgressRecorder.Report(Microsoft.Azure.Storage.DataMovement.TransferStatus)
+  fullName: Atkins.Azure.ProgressRecorder.Report(Microsoft.Azure.Storage.DataMovement.TransferStatus)
+  nameWithType: ProgressRecorder.Report(TransferStatus)
+- uid: Atkins.Azure.ProgressRecorder.Report*
+  name: Report
+  href: api/Atkins.Azure.ProgressRecorder.html#Atkins_Azure_ProgressRecorder_Report_
+  commentId: Overload:Atkins.Azure.ProgressRecorder.Report
+  isSpec: "True"
+  fullName: Atkins.Azure.ProgressRecorder.Report
+  nameWithType: ProgressRecorder.Report
+- uid: Atkins.Azure.ProgressRecorder.TimeRemaining
+  name: TimeRemaining
+  href: api/Atkins.Azure.ProgressRecorder.html#Atkins_Azure_ProgressRecorder_TimeRemaining
+  commentId: P:Atkins.Azure.ProgressRecorder.TimeRemaining
+  fullName: Atkins.Azure.ProgressRecorder.TimeRemaining
+  nameWithType: ProgressRecorder.TimeRemaining
+- uid: Atkins.Azure.ProgressRecorder.TimeRemaining*
+  name: TimeRemaining
+  href: api/Atkins.Azure.ProgressRecorder.html#Atkins_Azure_ProgressRecorder_TimeRemaining_
+  commentId: Overload:Atkins.Azure.ProgressRecorder.TimeRemaining
+  isSpec: "True"
+  fullName: Atkins.Azure.ProgressRecorder.TimeRemaining
+  nameWithType: ProgressRecorder.TimeRemaining
+- uid: Atkins.Azure.ProgressRecorder.ToString
+  name: ToString()
+  href: api/Atkins.Azure.ProgressRecorder.html#Atkins_Azure_ProgressRecorder_ToString
+  commentId: M:Atkins.Azure.ProgressRecorder.ToString
+  fullName: Atkins.Azure.ProgressRecorder.ToString()
+  nameWithType: ProgressRecorder.ToString()
+- uid: Atkins.Azure.ProgressRecorder.ToString*
+  name: ToString
+  href: api/Atkins.Azure.ProgressRecorder.html#Atkins_Azure_ProgressRecorder_ToString_
+  commentId: Overload:Atkins.Azure.ProgressRecorder.ToString
+  isSpec: "True"
+  fullName: Atkins.Azure.ProgressRecorder.ToString
+  nameWithType: ProgressRecorder.ToString
+- uid: Atkins.Azure.ProgressRecorder.updateCallback
+  name: updateCallback
+  href: api/Atkins.Azure.ProgressRecorder.html#Atkins_Azure_ProgressRecorder_updateCallback
+  commentId: F:Atkins.Azure.ProgressRecorder.updateCallback
+  fullName: Atkins.Azure.ProgressRecorder.updateCallback
+  nameWithType: ProgressRecorder.updateCallback

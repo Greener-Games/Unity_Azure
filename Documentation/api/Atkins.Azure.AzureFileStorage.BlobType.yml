@@ -1,0 +1,145 @@
+### YamlMime:ManagedReference
+items:
+- uid: Atkins.Azure.AzureFileStorage.BlobType
+  commentId: T:Atkins.Azure.AzureFileStorage.BlobType
+  id: AzureFileStorage.BlobType
+  parent: Atkins.Azure
+  children:
+  - Atkins.Azure.AzureFileStorage.BlobType.APPEND
+  - Atkins.Azure.AzureFileStorage.BlobType.BLOCK
+  - Atkins.Azure.AzureFileStorage.BlobType.PAGE
+  langs:
+  - csharp
+  - vb
+  name: AzureFileStorage.BlobType
+  nameWithType: AzureFileStorage.BlobType
+  fullName: Atkins.Azure.AzureFileStorage.BlobType
+  type: Enum
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureFileStorage.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: BlobType
+    path: ../Packages/Azure/Scripts/AzureFileStorage.cs
+    startLine: 18
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  syntax:
+    content: public enum BlobType
+    content.vb: Public Enum BlobType
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: Atkins.Azure.AzureFileStorage.BlobType.PAGE
+  commentId: F:Atkins.Azure.AzureFileStorage.BlobType.PAGE
+  id: PAGE
+  parent: Atkins.Azure.AzureFileStorage.BlobType
+  langs:
+  - csharp
+  - vb
+  name: PAGE
+  nameWithType: AzureFileStorage.BlobType.PAGE
+  fullName: Atkins.Azure.AzureFileStorage.BlobType.PAGE
+  type: Field
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureFileStorage.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: PAGE
+    path: ../Packages/Azure/Scripts/AzureFileStorage.cs
+    startLine: 20
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  syntax:
+    content: PAGE = 0
+    return:
+      type: Atkins.Azure.AzureFileStorage.BlobType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Atkins.Azure.AzureFileStorage.BlobType.APPEND
+  commentId: F:Atkins.Azure.AzureFileStorage.BlobType.APPEND
+  id: APPEND
+  parent: Atkins.Azure.AzureFileStorage.BlobType
+  langs:
+  - csharp
+  - vb
+  name: APPEND
+  nameWithType: AzureFileStorage.BlobType.APPEND
+  fullName: Atkins.Azure.AzureFileStorage.BlobType.APPEND
+  type: Field
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureFileStorage.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: APPEND
+    path: ../Packages/Azure/Scripts/AzureFileStorage.cs
+    startLine: 21
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  syntax:
+    content: APPEND = 1
+    return:
+      type: Atkins.Azure.AzureFileStorage.BlobType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Atkins.Azure.AzureFileStorage.BlobType.BLOCK
+  commentId: F:Atkins.Azure.AzureFileStorage.BlobType.BLOCK
+  id: BLOCK
+  parent: Atkins.Azure.AzureFileStorage.BlobType
+  langs:
+  - csharp
+  - vb
+  name: BLOCK
+  nameWithType: AzureFileStorage.BlobType.BLOCK
+  fullName: Atkins.Azure.AzureFileStorage.BlobType.BLOCK
+  type: Field
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureFileStorage.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: BLOCK
+    path: ../Packages/Azure/Scripts/AzureFileStorage.cs
+    startLine: 22
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  syntax:
+    content: BLOCK = 2
+    return:
+      type: Atkins.Azure.AzureFileStorage.BlobType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: Atkins.Azure
+  commentId: N:Atkins.Azure
+  name: Atkins.Azure
+  nameWithType: Atkins.Azure
+  fullName: Atkins.Azure
+- uid: Atkins.Azure.AzureFileStorage.BlobType
+  commentId: T:Atkins.Azure.AzureFileStorage.BlobType
+  parent: Atkins.Azure
+  name: AzureFileStorage.BlobType
+  nameWithType: AzureFileStorage.BlobType
+  fullName: Atkins.Azure.AzureFileStorage.BlobType

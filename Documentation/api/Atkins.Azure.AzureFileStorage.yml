@@ -1,0 +1,847 @@
+### YamlMime:ManagedReference
+items:
+- uid: Atkins.Azure.AzureFileStorage
+  commentId: T:Atkins.Azure.AzureFileStorage
+  id: AzureFileStorage
+  parent: Atkins.Azure
+  children:
+  - Atkins.Azure.AzureFileStorage.CheckFileSize(System.String,System.String)
+  - Atkins.Azure.AzureFileStorage.DeleteFile(System.String,System.String)
+  - Atkins.Azure.AzureFileStorage.DownloadFile(System.String,System.String,System.String,System.Action{Atkins.Azure.ProgressRecorder},System.Int32,System.Int32)
+  - Atkins.Azure.AzureFileStorage.GetContainer(System.String)
+  - Atkins.Azure.AzureFileStorage.GetFileProperties(System.String,System.String)
+  - Atkins.Azure.AzureFileStorage.LastModifiedAsync(System.String,System.String)
+  - Atkins.Azure.AzureFileStorage.UploadFile(System.String,System.String,System.String,System.Threading.CancellationToken,Atkins.Azure.AzureFileStorage.BlobType,System.Action{Atkins.Azure.ProgressRecorder},System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: AzureFileStorage
+  nameWithType: AzureFileStorage
+  fullName: Atkins.Azure.AzureFileStorage
+  type: Class
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureFileStorage.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: AzureFileStorage
+    path: ../Packages/Azure/Scripts/AzureFileStorage.cs
+    startLine: 16
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nClass acting like an interface between ICON and Azure systems for uploading files.\n"
+  example: []
+  syntax:
+    content: 'public class AzureFileStorage : MonoBehaviour'
+    content.vb: >-
+      Public Class AzureFileStorage
+          Inherits MonoBehaviour
+  inheritance:
+  - System.Object
+  - UnityEngine.Object
+  - UnityEngine.Component
+  - UnityEngine.Behaviour
+  - UnityEngine.MonoBehaviour
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Atkins.Azure.AzureFileStorage.GetContainer(System.String)
+  commentId: M:Atkins.Azure.AzureFileStorage.GetContainer(System.String)
+  id: GetContainer(System.String)
+  parent: Atkins.Azure.AzureFileStorage
+  langs:
+  - csharp
+  - vb
+  name: GetContainer(String)
+  nameWithType: AzureFileStorage.GetContainer(String)
+  fullName: Atkins.Azure.AzureFileStorage.GetContainer(System.String)
+  type: Method
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureFileStorage.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: GetContainer
+    path: ../Packages/Azure/Scripts/AzureFileStorage.cs
+    startLine: 34
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nStatic function returning the Container Task for a given name\n"
+  example: []
+  syntax:
+    content: public static Task<CloudBlobContainer> GetContainer(string containerName)
+    parameters:
+    - id: containerName
+      type: System.String
+      description: The name of the container we want to find
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.Azure.Storage.Blob.CloudBlobContainer}
+      description: ''
+    content.vb: Public Shared Function GetContainer(containerName As String) As Task(Of CloudBlobContainer)
+  overload: Atkins.Azure.AzureFileStorage.GetContainer*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Atkins.Azure.AzureFileStorage.UploadFile(System.String,System.String,System.String,System.Threading.CancellationToken,Atkins.Azure.AzureFileStorage.BlobType,System.Action{Atkins.Azure.ProgressRecorder},System.Int32)
+  commentId: M:Atkins.Azure.AzureFileStorage.UploadFile(System.String,System.String,System.String,System.Threading.CancellationToken,Atkins.Azure.AzureFileStorage.BlobType,System.Action{Atkins.Azure.ProgressRecorder},System.Int32)
+  id: UploadFile(System.String,System.String,System.String,System.Threading.CancellationToken,Atkins.Azure.AzureFileStorage.BlobType,System.Action{Atkins.Azure.ProgressRecorder},System.Int32)
+  parent: Atkins.Azure.AzureFileStorage
+  langs:
+  - csharp
+  - vb
+  name: UploadFile(String, String, String, CancellationToken, AzureFileStorage.BlobType, Action<ProgressRecorder>, Int32)
+  nameWithType: AzureFileStorage.UploadFile(String, String, String, CancellationToken, AzureFileStorage.BlobType, Action<ProgressRecorder>, Int32)
+  fullName: Atkins.Azure.AzureFileStorage.UploadFile(System.String, System.String, System.String, System.Threading.CancellationToken, Atkins.Azure.AzureFileStorage.BlobType, System.Action<Atkins.Azure.ProgressRecorder>, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureFileStorage.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: UploadFile
+    path: ../Packages/Azure/Scripts/AzureFileStorage.cs
+    startLine: 86
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nUpload a file to Azure server async\n"
+  example: []
+  syntax:
+    content: public static Task<bool> UploadFile(string containerName, string sourceFile, string blobSaveLocation, CancellationToken token, AzureFileStorage.BlobType blobType = AzureFileStorage.BlobType.PAGE, Action<ProgressRecorder> processCallback = null, int tries = 0)
+    parameters:
+    - id: containerName
+      type: System.String
+      description: The name of the CloudBlobContainer
+    - id: sourceFile
+      type: System.String
+      description: The path of the file to upload
+    - id: blobSaveLocation
+      type: System.String
+      description: The blob name
+    - id: token
+      type: System.Threading.CancellationToken
+      description: The cancellation token. Used only in TransferManager.UploadAsync method.
+    - id: blobType
+      type: Atkins.Azure.AzureFileStorage.BlobType
+      description: 'The type of the blob. By default: PAGE'
+    - id: processCallback
+      type: System.Action{Atkins.Azure.ProgressRecorder}
+      description: The progress callback element. Used for creating the progress recorder
+    - id: tries
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Shared Function UploadFile(containerName As String, sourceFile As String, blobSaveLocation As String, token As CancellationToken, blobType As AzureFileStorage.BlobType = AzureFileStorage.BlobType.PAGE, processCallback As Action(Of ProgressRecorder) = Nothing, tries As Integer = 0) As Task(Of Boolean)
+  overload: Atkins.Azure.AzureFileStorage.UploadFile*
+  nameWithType.vb: AzureFileStorage.UploadFile(String, String, String, CancellationToken, AzureFileStorage.BlobType, Action(Of ProgressRecorder), Int32)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Atkins.Azure.AzureFileStorage.UploadFile(System.String, System.String, System.String, System.Threading.CancellationToken, Atkins.Azure.AzureFileStorage.BlobType, System.Action(Of Atkins.Azure.ProgressRecorder), System.Int32)
+  name.vb: UploadFile(String, String, String, CancellationToken, AzureFileStorage.BlobType, Action(Of ProgressRecorder), Int32)
+- uid: Atkins.Azure.AzureFileStorage.DownloadFile(System.String,System.String,System.String,System.Action{Atkins.Azure.ProgressRecorder},System.Int32,System.Int32)
+  commentId: M:Atkins.Azure.AzureFileStorage.DownloadFile(System.String,System.String,System.String,System.Action{Atkins.Azure.ProgressRecorder},System.Int32,System.Int32)
+  id: DownloadFile(System.String,System.String,System.String,System.Action{Atkins.Azure.ProgressRecorder},System.Int32,System.Int32)
+  parent: Atkins.Azure.AzureFileStorage
+  langs:
+  - csharp
+  - vb
+  name: DownloadFile(String, String, String, Action<ProgressRecorder>, Int32, Int32)
+  nameWithType: AzureFileStorage.DownloadFile(String, String, String, Action<ProgressRecorder>, Int32, Int32)
+  fullName: Atkins.Azure.AzureFileStorage.DownloadFile(System.String, System.String, System.String, System.Action<Atkins.Azure.ProgressRecorder>, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureFileStorage.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: DownloadFile
+    path: ../Packages/Azure/Scripts/AzureFileStorage.cs
+    startLine: 166
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nDownload a file from Azure server async\n"
+  example: []
+  syntax:
+    content: public static Task<bool> DownloadFile(string containerName, string sourceLocation, string saveLocation, Action<ProgressRecorder> processCallback = null, int maxTries = 3, int currentTries = 0)
+    parameters:
+    - id: containerName
+      type: System.String
+      description: The name of the CloudBlobContainer
+    - id: sourceLocation
+      type: System.String
+      description: The blob name
+    - id: saveLocation
+      type: System.String
+      description: The path to the file we want to delete
+    - id: processCallback
+      type: System.Action{Atkins.Azure.ProgressRecorder}
+      description: The progress callback
+    - id: maxTries
+      type: System.Int32
+      description: Maximum numbers of tried before failing
+    - id: currentTries
+      type: System.Int32
+      description: current number of tried for the download
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Shared Function DownloadFile(containerName As String, sourceLocation As String, saveLocation As String, processCallback As Action(Of ProgressRecorder) = Nothing, maxTries As Integer = 3, currentTries As Integer = 0) As Task(Of Boolean)
+  overload: Atkins.Azure.AzureFileStorage.DownloadFile*
+  nameWithType.vb: AzureFileStorage.DownloadFile(String, String, String, Action(Of ProgressRecorder), Int32, Int32)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Atkins.Azure.AzureFileStorage.DownloadFile(System.String, System.String, System.String, System.Action(Of Atkins.Azure.ProgressRecorder), System.Int32, System.Int32)
+  name.vb: DownloadFile(String, String, String, Action(Of ProgressRecorder), Int32, Int32)
+- uid: Atkins.Azure.AzureFileStorage.GetFileProperties(System.String,System.String)
+  commentId: M:Atkins.Azure.AzureFileStorage.GetFileProperties(System.String,System.String)
+  id: GetFileProperties(System.String,System.String)
+  parent: Atkins.Azure.AzureFileStorage
+  langs:
+  - csharp
+  - vb
+  name: GetFileProperties(String, String)
+  nameWithType: AzureFileStorage.GetFileProperties(String, String)
+  fullName: Atkins.Azure.AzureFileStorage.GetFileProperties(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureFileStorage.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: GetFileProperties
+    path: ../Packages/Azure/Scripts/AzureFileStorage.cs
+    startLine: 233
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nGet the property data for the Blob file.\n"
+  example: []
+  syntax:
+    content: public static Task<BlobProperties> GetFileProperties(string containerName, string fileName)
+    parameters:
+    - id: containerName
+      type: System.String
+    - id: fileName
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{Microsoft.Azure.Storage.Blob.BlobProperties}
+    content.vb: Public Shared Function GetFileProperties(containerName As String, fileName As String) As Task(Of BlobProperties)
+  overload: Atkins.Azure.AzureFileStorage.GetFileProperties*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Atkins.Azure.AzureFileStorage.LastModifiedAsync(System.String,System.String)
+  commentId: M:Atkins.Azure.AzureFileStorage.LastModifiedAsync(System.String,System.String)
+  id: LastModifiedAsync(System.String,System.String)
+  parent: Atkins.Azure.AzureFileStorage
+  langs:
+  - csharp
+  - vb
+  name: LastModifiedAsync(String, String)
+  nameWithType: AzureFileStorage.LastModifiedAsync(String, String)
+  fullName: Atkins.Azure.AzureFileStorage.LastModifiedAsync(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureFileStorage.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: LastModifiedAsync
+    path: ../Packages/Azure/Scripts/AzureFileStorage.cs
+    startLine: 258
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nGet the last modified time of a file in Azure async\n"
+  example: []
+  syntax:
+    content: public static Task<DateTime> LastModifiedAsync(string containerName, string fileName)
+    parameters:
+    - id: containerName
+      type: System.String
+    - id: fileName
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.DateTime}
+    content.vb: Public Shared Function LastModifiedAsync(containerName As String, fileName As String) As Task(Of Date)
+  overload: Atkins.Azure.AzureFileStorage.LastModifiedAsync*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Atkins.Azure.AzureFileStorage.DeleteFile(System.String,System.String)
+  commentId: M:Atkins.Azure.AzureFileStorage.DeleteFile(System.String,System.String)
+  id: DeleteFile(System.String,System.String)
+  parent: Atkins.Azure.AzureFileStorage
+  langs:
+  - csharp
+  - vb
+  name: DeleteFile(String, String)
+  nameWithType: AzureFileStorage.DeleteFile(String, String)
+  fullName: Atkins.Azure.AzureFileStorage.DeleteFile(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureFileStorage.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: DeleteFile
+    path: ../Packages/Azure/Scripts/AzureFileStorage.cs
+    startLine: 280
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nDelete a file from Azure async\n"
+  example: []
+  syntax:
+    content: public static Task<bool> DeleteFile(string containerName, string fileName)
+    parameters:
+    - id: containerName
+      type: System.String
+    - id: fileName
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Shared Function DeleteFile(containerName As String, fileName As String) As Task(Of Boolean)
+  overload: Atkins.Azure.AzureFileStorage.DeleteFile*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Atkins.Azure.AzureFileStorage.CheckFileSize(System.String,System.String)
+  commentId: M:Atkins.Azure.AzureFileStorage.CheckFileSize(System.String,System.String)
+  id: CheckFileSize(System.String,System.String)
+  parent: Atkins.Azure.AzureFileStorage
+  langs:
+  - csharp
+  - vb
+  name: CheckFileSize(String, String)
+  nameWithType: AzureFileStorage.CheckFileSize(String, String)
+  fullName: Atkins.Azure.AzureFileStorage.CheckFileSize(System.String, System.String)
+  type: Method
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureFileStorage.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: CheckFileSize
+    path: ../Packages/Azure/Scripts/AzureFileStorage.cs
+    startLine: 310
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nUnused function?\nFunction giving the size of a file\n"
+  example: []
+  syntax:
+    content: public static Task<long> CheckFileSize(string containerName, string fileName)
+    parameters:
+    - id: containerName
+      type: System.String
+      description: The cloud blob container
+    - id: fileName
+      type: System.String
+      description: The name of the file we want the size of
+    return:
+      type: System.Threading.Tasks.Task{System.Int64}
+      description: Returns the lenght of the file
+    content.vb: Public Shared Function CheckFileSize(containerName As String, fileName As String) As Task(Of Long)
+  overload: Atkins.Azure.AzureFileStorage.CheckFileSize*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Atkins.Azure
+  commentId: N:Atkins.Azure
+  name: Atkins.Azure
+  nameWithType: Atkins.Azure
+  fullName: Atkins.Azure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  parent: UnityEngine
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: UnityEngine.Component
+  commentId: T:UnityEngine.Component
+  parent: UnityEngine
+  isExternal: true
+  name: Component
+  nameWithType: Component
+  fullName: UnityEngine.Component
+- uid: UnityEngine.Behaviour
+  commentId: T:UnityEngine.Behaviour
+  parent: UnityEngine
+  isExternal: true
+  name: Behaviour
+  nameWithType: Behaviour
+  fullName: UnityEngine.Behaviour
+- uid: UnityEngine.MonoBehaviour
+  commentId: T:UnityEngine.MonoBehaviour
+  parent: UnityEngine
+  isExternal: true
+  name: MonoBehaviour
+  nameWithType: MonoBehaviour
+  fullName: UnityEngine.MonoBehaviour
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: Atkins.Azure.AzureFileStorage.GetContainer*
+  commentId: Overload:Atkins.Azure.AzureFileStorage.GetContainer
+  name: GetContainer
+  nameWithType: AzureFileStorage.GetContainer
+  fullName: Atkins.Azure.AzureFileStorage.GetContainer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Threading.Tasks.Task{Microsoft.Azure.Storage.Blob.CloudBlobContainer}
+  commentId: T:System.Threading.Tasks.Task{Microsoft.Azure.Storage.Blob.CloudBlobContainer}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<CloudBlobContainer>
+  nameWithType: Task<CloudBlobContainer>
+  fullName: System.Threading.Tasks.Task<Microsoft.Azure.Storage.Blob.CloudBlobContainer>
+  nameWithType.vb: Task(Of CloudBlobContainer)
+  fullName.vb: System.Threading.Tasks.Task(Of Microsoft.Azure.Storage.Blob.CloudBlobContainer)
+  name.vb: Task(Of CloudBlobContainer)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.Azure.Storage.Blob.CloudBlobContainer
+    name: CloudBlobContainer
+    nameWithType: CloudBlobContainer
+    fullName: Microsoft.Azure.Storage.Blob.CloudBlobContainer
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.Azure.Storage.Blob.CloudBlobContainer
+    name: CloudBlobContainer
+    nameWithType: CloudBlobContainer
+    fullName: Microsoft.Azure.Storage.Blob.CloudBlobContainer
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: Atkins.Azure.AzureFileStorage.UploadFile*
+  commentId: Overload:Atkins.Azure.AzureFileStorage.UploadFile
+  name: UploadFile
+  nameWithType: AzureFileStorage.UploadFile
+  fullName: Atkins.Azure.AzureFileStorage.UploadFile
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: Atkins.Azure.AzureFileStorage.BlobType
+  commentId: T:Atkins.Azure.AzureFileStorage.BlobType
+  parent: Atkins.Azure
+  name: AzureFileStorage.BlobType
+  nameWithType: AzureFileStorage.BlobType
+  fullName: Atkins.Azure.AzureFileStorage.BlobType
+- uid: System.Action{Atkins.Azure.ProgressRecorder}
+  commentId: T:System.Action{Atkins.Azure.ProgressRecorder}
+  parent: System
+  definition: System.Action`1
+  name: Action<ProgressRecorder>
+  nameWithType: Action<ProgressRecorder>
+  fullName: System.Action<Atkins.Azure.ProgressRecorder>
+  nameWithType.vb: Action(Of ProgressRecorder)
+  fullName.vb: System.Action(Of Atkins.Azure.ProgressRecorder)
+  name.vb: Action(Of ProgressRecorder)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Atkins.Azure.ProgressRecorder
+    name: ProgressRecorder
+    nameWithType: ProgressRecorder
+    fullName: Atkins.Azure.ProgressRecorder
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Atkins.Azure.ProgressRecorder
+    name: ProgressRecorder
+    nameWithType: ProgressRecorder
+    fullName: Atkins.Azure.ProgressRecorder
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Boolean>
+  nameWithType: Task<Boolean>
+  fullName: System.Threading.Tasks.Task<System.Boolean>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of System.Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    nameWithType: Action
+    fullName: System.Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Atkins.Azure.AzureFileStorage.DownloadFile*
+  commentId: Overload:Atkins.Azure.AzureFileStorage.DownloadFile
+  name: DownloadFile
+  nameWithType: AzureFileStorage.DownloadFile
+  fullName: Atkins.Azure.AzureFileStorage.DownloadFile
+- uid: Atkins.Azure.AzureFileStorage.GetFileProperties*
+  commentId: Overload:Atkins.Azure.AzureFileStorage.GetFileProperties
+  name: GetFileProperties
+  nameWithType: AzureFileStorage.GetFileProperties
+  fullName: Atkins.Azure.AzureFileStorage.GetFileProperties
+- uid: System.Threading.Tasks.Task{Microsoft.Azure.Storage.Blob.BlobProperties}
+  commentId: T:System.Threading.Tasks.Task{Microsoft.Azure.Storage.Blob.BlobProperties}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<BlobProperties>
+  nameWithType: Task<BlobProperties>
+  fullName: System.Threading.Tasks.Task<Microsoft.Azure.Storage.Blob.BlobProperties>
+  nameWithType.vb: Task(Of BlobProperties)
+  fullName.vb: System.Threading.Tasks.Task(Of Microsoft.Azure.Storage.Blob.BlobProperties)
+  name.vb: Task(Of BlobProperties)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Microsoft.Azure.Storage.Blob.BlobProperties
+    name: BlobProperties
+    nameWithType: BlobProperties
+    fullName: Microsoft.Azure.Storage.Blob.BlobProperties
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Microsoft.Azure.Storage.Blob.BlobProperties
+    name: BlobProperties
+    nameWithType: BlobProperties
+    fullName: Microsoft.Azure.Storage.Blob.BlobProperties
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Atkins.Azure.AzureFileStorage.LastModifiedAsync*
+  commentId: Overload:Atkins.Azure.AzureFileStorage.LastModifiedAsync
+  name: LastModifiedAsync
+  nameWithType: AzureFileStorage.LastModifiedAsync
+  fullName: Atkins.Azure.AzureFileStorage.LastModifiedAsync
+- uid: System.Threading.Tasks.Task{System.DateTime}
+  commentId: T:System.Threading.Tasks.Task{System.DateTime}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<DateTime>
+  nameWithType: Task<DateTime>
+  fullName: System.Threading.Tasks.Task<System.DateTime>
+  nameWithType.vb: Task(Of DateTime)
+  fullName.vb: System.Threading.Tasks.Task(Of System.DateTime)
+  name.vb: Task(Of DateTime)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.DateTime
+    name: DateTime
+    nameWithType: DateTime
+    fullName: System.DateTime
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.DateTime
+    name: DateTime
+    nameWithType: DateTime
+    fullName: System.DateTime
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Atkins.Azure.AzureFileStorage.DeleteFile*
+  commentId: Overload:Atkins.Azure.AzureFileStorage.DeleteFile
+  name: DeleteFile
+  nameWithType: AzureFileStorage.DeleteFile
+  fullName: Atkins.Azure.AzureFileStorage.DeleteFile
+- uid: Atkins.Azure.AzureFileStorage.CheckFileSize*
+  commentId: Overload:Atkins.Azure.AzureFileStorage.CheckFileSize
+  name: CheckFileSize
+  nameWithType: AzureFileStorage.CheckFileSize
+  fullName: Atkins.Azure.AzureFileStorage.CheckFileSize
+- uid: System.Threading.Tasks.Task{System.Int64}
+  commentId: T:System.Threading.Tasks.Task{System.Int64}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Int64>
+  nameWithType: Task<Int64>
+  fullName: System.Threading.Tasks.Task<System.Int64>
+  nameWithType.vb: Task(Of Int64)
+  fullName.vb: System.Threading.Tasks.Task(Of System.Int64)
+  name.vb: Task(Of Int64)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )

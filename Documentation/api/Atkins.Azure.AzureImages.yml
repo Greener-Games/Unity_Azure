@@ -1,0 +1,496 @@
+### YamlMime:ManagedReference
+items:
+- uid: Atkins.Azure.AzureImages
+  commentId: T:Atkins.Azure.AzureImages
+  id: AzureImages
+  parent: Atkins.Azure
+  children:
+  - Atkins.Azure.AzureImages.ContainerName
+  - Atkins.Azure.AzureImages.DeleteImage(System.String)
+  - Atkins.Azure.AzureImages.FileFormat
+  - Atkins.Azure.AzureImages.FolderName
+  - Atkins.Azure.AzureImages.GetCachedImage(System.String,System.Int32)
+  - Atkins.Azure.AzureImages.UploadImage(System.String)
+  langs:
+  - csharp
+  - vb
+  name: AzureImages
+  nameWithType: AzureImages
+  fullName: Atkins.Azure.AzureImages
+  type: Class
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureImages.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: AzureImages
+    path: ../Packages/Azure/Scripts/AzureImages.cs
+    startLine: 13
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nPlays the role of an interface between the Azure system and ICON framework. It allows user/coder to simply upload, download and delete images on server\n"
+  example: []
+  syntax:
+    content: 'public class AzureImages : MonoBehaviour'
+    content.vb: >-
+      Public Class AzureImages
+          Inherits MonoBehaviour
+  inheritance:
+  - System.Object
+  - UnityEngine.Object
+  - UnityEngine.Component
+  - UnityEngine.Behaviour
+  - UnityEngine.MonoBehaviour
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Atkins.Azure.AzureImages.FolderName
+  commentId: F:Atkins.Azure.AzureImages.FolderName
+  id: FolderName
+  parent: Atkins.Azure.AzureImages
+  langs:
+  - csharp
+  - vb
+  name: FolderName
+  nameWithType: AzureImages.FolderName
+  fullName: Atkins.Azure.AzureImages.FolderName
+  type: Field
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureImages.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: FolderName
+    path: ../Packages/Azure/Scripts/AzureImages.cs
+    startLine: 15
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  syntax:
+    content: public const string FolderName = "Images"
+    return:
+      type: System.String
+    content.vb: Public Const FolderName As String = "Images"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Atkins.Azure.AzureImages.FileFormat
+  commentId: F:Atkins.Azure.AzureImages.FileFormat
+  id: FileFormat
+  parent: Atkins.Azure.AzureImages
+  langs:
+  - csharp
+  - vb
+  name: FileFormat
+  nameWithType: AzureImages.FileFormat
+  fullName: Atkins.Azure.AzureImages.FileFormat
+  type: Field
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureImages.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: FileFormat
+    path: ../Packages/Azure/Scripts/AzureImages.cs
+    startLine: 16
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  syntax:
+    content: public const string FileFormat = "Image_"
+    return:
+      type: System.String
+    content.vb: Public Const FileFormat As String = "Image_"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Atkins.Azure.AzureImages.ContainerName
+  commentId: F:Atkins.Azure.AzureImages.ContainerName
+  id: ContainerName
+  parent: Atkins.Azure.AzureImages
+  langs:
+  - csharp
+  - vb
+  name: ContainerName
+  nameWithType: AzureImages.ContainerName
+  fullName: Atkins.Azure.AzureImages.ContainerName
+  type: Field
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureImages.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: ContainerName
+    path: ../Packages/Azure/Scripts/AzureImages.cs
+    startLine: 17
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  syntax:
+    content: public const string ContainerName = "images"
+    return:
+      type: System.String
+    content.vb: Public Const ContainerName As String = "images"
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Atkins.Azure.AzureImages.UploadImage(System.String)
+  commentId: M:Atkins.Azure.AzureImages.UploadImage(System.String)
+  id: UploadImage(System.String)
+  parent: Atkins.Azure.AzureImages
+  langs:
+  - csharp
+  - vb
+  name: UploadImage(String)
+  nameWithType: AzureImages.UploadImage(String)
+  fullName: Atkins.Azure.AzureImages.UploadImage(System.String)
+  type: Method
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureImages.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: UploadImage
+    path: ../Packages/Azure/Scripts/AzureImages.cs
+    startLine: 24
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nUpload an image to the database and return its new name\n"
+  example: []
+  syntax:
+    content: public static Task<string> UploadImage(string imagePath)
+    parameters:
+    - id: imagePath
+      type: System.String
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+      description: ''
+    content.vb: Public Shared Function UploadImage(imagePath As String) As Task(Of String)
+  overload: Atkins.Azure.AzureImages.UploadImage*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Atkins.Azure.AzureImages.GetCachedImage(System.String,System.Int32)
+  commentId: M:Atkins.Azure.AzureImages.GetCachedImage(System.String,System.Int32)
+  id: GetCachedImage(System.String,System.Int32)
+  parent: Atkins.Azure.AzureImages
+  langs:
+  - csharp
+  - vb
+  name: GetCachedImage(String, Int32)
+  nameWithType: AzureImages.GetCachedImage(String, Int32)
+  fullName: Atkins.Azure.AzureImages.GetCachedImage(System.String, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureImages.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: GetCachedImage
+    path: ../Packages/Azure/Scripts/AzureImages.cs
+    startLine: 41
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nLoad an image from the cache or download from images container\n"
+  example: []
+  syntax:
+    content: public static Task<Texture2D> GetCachedImage(string fileName, int forceCacheTime = 300)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: ''
+    - id: forceCacheTime
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task{UnityEngine.Texture2D}
+      description: ''
+    content.vb: Public Shared Function GetCachedImage(fileName As String, forceCacheTime As Integer = 300) As Task(Of Texture2D)
+  overload: Atkins.Azure.AzureImages.GetCachedImage*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Atkins.Azure.AzureImages.DeleteImage(System.String)
+  commentId: M:Atkins.Azure.AzureImages.DeleteImage(System.String)
+  id: DeleteImage(System.String)
+  parent: Atkins.Azure.AzureImages
+  langs:
+  - csharp
+  - vb
+  name: DeleteImage(String)
+  nameWithType: AzureImages.DeleteImage(String)
+  fullName: Atkins.Azure.AzureImages.DeleteImage(System.String)
+  type: Method
+  source:
+    remote:
+      path: Packages/Azure/Scripts/AzureImages.cs
+      branch: develop
+      repo: https://atkins-global@dev.azure.com/atkins-global/Creative%20Design%20Unity/_git/Azure_Helpers
+    id: DeleteImage
+    path: ../Packages/Azure/Scripts/AzureImages.cs
+    startLine: 99
+  assemblies:
+  - Atkins.Azure
+  namespace: Atkins.Azure
+  summary: "\nremoves and image from the server\n"
+  example: []
+  syntax:
+    content: public static Task DeleteImage(string imgName)
+    parameters:
+    - id: imgName
+      type: System.String
+      description: ''
+    return:
+      type: System.Threading.Tasks.Task
+      description: ''
+    content.vb: Public Shared Function DeleteImage(imgName As String) As Task
+  overload: Atkins.Azure.AzureImages.DeleteImage*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Atkins.Azure
+  commentId: N:Atkins.Azure
+  name: Atkins.Azure
+  nameWithType: Atkins.Azure
+  fullName: Atkins.Azure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: UnityEngine.Object
+  commentId: T:UnityEngine.Object
+  parent: UnityEngine
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: UnityEngine.Object
+- uid: UnityEngine.Component
+  commentId: T:UnityEngine.Component
+  parent: UnityEngine
+  isExternal: true
+  name: Component
+  nameWithType: Component
+  fullName: UnityEngine.Component
+- uid: UnityEngine.Behaviour
+  commentId: T:UnityEngine.Behaviour
+  parent: UnityEngine
+  isExternal: true
+  name: Behaviour
+  nameWithType: Behaviour
+  fullName: UnityEngine.Behaviour
+- uid: UnityEngine.MonoBehaviour
+  commentId: T:UnityEngine.MonoBehaviour
+  parent: UnityEngine
+  isExternal: true
+  name: MonoBehaviour
+  nameWithType: MonoBehaviour
+  fullName: UnityEngine.MonoBehaviour
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: UnityEngine
+  commentId: N:UnityEngine
+  isExternal: true
+  name: UnityEngine
+  nameWithType: UnityEngine
+  fullName: UnityEngine
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Atkins.Azure.AzureImages.UploadImage*
+  commentId: Overload:Atkins.Azure.AzureImages.UploadImage
+  name: UploadImage
+  nameWithType: AzureImages.UploadImage
+  fullName: Atkins.Azure.AzureImages.UploadImage
+- uid: System.Threading.Tasks.Task{System.String}
+  commentId: T:System.Threading.Tasks.Task{System.String}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<String>
+  nameWithType: Task<String>
+  fullName: System.Threading.Tasks.Task<System.String>
+  nameWithType.vb: Task(Of String)
+  fullName.vb: System.Threading.Tasks.Task(Of System.String)
+  name.vb: Task(Of String)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TResult
+    nameWithType: TResult
+    fullName: TResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+- uid: Atkins.Azure.AzureImages.GetCachedImage*
+  commentId: Overload:Atkins.Azure.AzureImages.GetCachedImage
+  name: GetCachedImage
+  nameWithType: AzureImages.GetCachedImage
+  fullName: Atkins.Azure.AzureImages.GetCachedImage
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Threading.Tasks.Task{UnityEngine.Texture2D}
+  commentId: T:System.Threading.Tasks.Task{UnityEngine.Texture2D}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  name: Task<Texture2D>
+  nameWithType: Task<Texture2D>
+  fullName: System.Threading.Tasks.Task<UnityEngine.Texture2D>
+  nameWithType.vb: Task(Of Texture2D)
+  fullName.vb: System.Threading.Tasks.Task(Of UnityEngine.Texture2D)
+  name.vb: Task(Of Texture2D)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: UnityEngine.Texture2D
+    name: Texture2D
+    nameWithType: Texture2D
+    fullName: UnityEngine.Texture2D
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    nameWithType: Task
+    fullName: System.Threading.Tasks.Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: UnityEngine.Texture2D
+    name: Texture2D
+    nameWithType: Texture2D
+    fullName: UnityEngine.Texture2D
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Atkins.Azure.AzureImages.DeleteImage*
+  commentId: Overload:Atkins.Azure.AzureImages.DeleteImage
+  name: DeleteImage
+  nameWithType: AzureImages.DeleteImage
+  fullName: Atkins.Azure.AzureImages.DeleteImage
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
