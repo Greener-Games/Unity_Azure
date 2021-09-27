@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.atkins.unity.azure-helpers": {
-      "version": "file:Azure",
+      "version": "file:Atkins Azure Helpers",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
