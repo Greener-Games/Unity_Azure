@@ -9,7 +9,7 @@ using Microsoft.Azure.Storage.DataMovement;
 using UnityAsyncAwaitUtil;
 using UnityEngine;
 
-namespace Atkins.Azure
+namespace Atkins.AzureHelpers
 {
     /// <summary>
     /// Class acting like an interface between ICON and Azure systems for uploading files.
@@ -25,7 +25,7 @@ namespace Atkins.Azure
 
         static CloudStorageAccount _storageAccount;
 
-        static CloudStorageAccount StorageAccount => _storageAccount ?? (_storageAccount = CloudStorageAccount.Parse(AzureSettings.ConnectionString));
+        static CloudStorageAccount StorageAccount => _storageAccount ?? (_storageAccount = CloudStorageAccount.Parse(AzureSettings.StorageConnectionString));
 
         /// <summary>
         /// Static function returning the Container Task for a given name

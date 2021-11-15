@@ -1,7 +1,8 @@
 using GG.ScriptableDataAsset;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace Atkins.Azure
+namespace Atkins.AzureHelpers
 {
     /// <summary>
     /// A class creating the Azure settings 
@@ -13,10 +14,16 @@ namespace Atkins.Azure
         /// </summary>
         protected override string AssetName { get; } = "Azure Settings";
         
+        [SerializeField]public string dataSource;
+        [SerializeField]public string databaseUserId;
+        [SerializeField]public string databasePassword;
+        [SerializeField]public string databaseName;
+        
+        
         /// <summary>
         /// The request done to Azure
         /// </summary>
-        [SerializeField] public string connectionString;
+        [SerializeField] public string storageConnectionString;
 
         /// <summary>
         /// A static reference to this DataAsset
@@ -38,7 +45,7 @@ namespace Atkins.Azure
         /// <summary>
         /// A static reference to the connection string (The request we do to Azure)
         /// </summary>
-        public static string ConnectionString => Loaded.connectionString;
+        public static string StorageConnectionString => Loaded.storageConnectionString;
 
         /// <summary>
         /// Function setting up the Asset
@@ -47,9 +54,6 @@ namespace Atkins.Azure
         protected override void NewAsset(AzureSettings asset)
         {
             base.NewAsset(asset);
-            asset.connectionString =
-                "DefaultEndpointsProtocol=http;AccountName=iconlivestorage;AccountKey=p2THVaXkAr0PGN9qnZhv2oSznC2AzjFcSwnfAm/R9tePdbp+uOYOjG2Bqx1B94yIXIMU6TUPdIbg65N8dUB/Iw==;EndpointSuffix=core.windows.net";
-            ;
         }
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.Azure.Storage.Blob;
 using Microsoft.Azure.Storage.DataMovement;
 using UnityAsyncAwaitUtil;
 
-namespace Atkins.Azure
+namespace Atkins.AzureHelpers
 {
     /// <summary>
     /// A helper class to record progress reported by data movement library.

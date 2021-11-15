@@ -1,7 +1,7 @@
 using GG.UnityEnsure;
 using UnityEditor;
 
-namespace Atkins.Azure.Editor
+namespace Atkins.AzureHelpers.Editor
 {
     internal class EnsureDefine
     {

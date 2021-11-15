@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Atkins.Azure.Editor
+namespace Atkins.AzureHelpers.Editor
 {
     /// <summary>
     /// Editor script used to enter settings for Azure
@@ -48,7 +48,15 @@ namespace Atkins.Azure.Editor
         public override void OnGUI(string searchContext)
         {
             EditorGUI.BeginChangeCheck();
-            azureSettings.connectionString = EditorGUILayout.TextField("Storage Address", azureSettings.connectionString);
+            
+            GUILayout.Label("Database");
+            azureSettings.dataSource = EditorGUILayout.TextField("Data Source", azureSettings.dataSource);
+            azureSettings.databaseUserId = EditorGUILayout.TextField("User ID", azureSettings.databaseUserId);
+            azureSettings.databasePassword = EditorGUILayout.TextField("Password", azureSettings.databasePassword);
+            azureSettings.databaseName = EditorGUILayout.TextField("Database", azureSettings.databaseName);
+                
+            GUILayout.Label("Storage");
+            azureSettings.storageConnectionString = EditorGUILayout.TextField("Storage Address", azureSettings.storageConnectionString);
 
             if (EditorGUI.EndChangeCheck())
             {

@@ -2,11 +2,10 @@
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using UnityAsyncAwaitUtil;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Atkins.Azure
+namespace Atkins.AzureHelpers
 {
     /// <summary>
     /// Plays the role of an interface between the Azure system and ICON framework. It allows user/coder to simply upload, download and delete images on server
