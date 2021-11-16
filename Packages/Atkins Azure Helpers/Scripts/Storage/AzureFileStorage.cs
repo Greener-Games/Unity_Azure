@@ -6,7 +6,6 @@ using AsyncIO.FileSystem;
 using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Blob;
 using Microsoft.Azure.Storage.DataMovement;
-using UnityAsyncAwaitUtil;
 using UnityEngine;
 
 namespace Atkins.AzureHelpers
