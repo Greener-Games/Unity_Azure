@@ -3,9 +3,10 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using AsyncIO.FileSystem;
-using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.Blob;
-using Microsoft.Azure.Storage.DataMovement;
+using Azure;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs.Specialized;
 using UnityEngine;
 
 namespace Atkins.AzureHelpers
@@ -21,26 +22,21 @@ namespace Atkins.AzureHelpers
             APPEND,
             BLOCK,
         }
+        
+        static BlobServiceClient _storageAccount;
 
-        static CloudStorageAccount _storageAccount;
-
-        static CloudStorageAccount StorageAccount => _storageAccount ?? (_storageAccount = CloudStorageAccount.Parse(AzureSettings.StorageConnectionString));
-
+        static BlobServiceClient StorageAccount => _storageAccount ?? (_storageAccount = new BlobServiceClient(AzureSettings.StorageConnectionString));
+        
         /// <summary>
         /// Static function returning the Container Task for a given name
         /// </summary>
         /// <param name="containerName">The name of the container we want to find</param>
         /// <returns></returns>
-        public static async Task<CloudBlobContainer> GetContainer(string containerName)
+        public static async Task<BlobContainerClient> GetContainer(string containerName)
         {
-            // Create a blob client for interacting with the blob service.
-            CloudBlobClient blobClient = StorageAccount.CreateCloudBlobClient();
-
-            // Create a container for organizing blobs within the storage account.
-            CloudBlobContainer container = blobClient.GetContainerReference(containerName);
-            await container.CreateIfNotExistsAsync(CancellationToken.None);
-
-            return container;
+            BlobContainerClient containerClient = StorageAccount.GetBlobContainerClient(containerName);
+            await containerClient.CreateIfNotExistsAsync();
+            return containerClient;
         }
 
         /// <summary>
@@ -49,22 +45,21 @@ namespace Atkins.AzureHelpers
         /// <param name="container"></param>
         /// <param name="blobName"></param>
         /// <returns></returns>
-        static async Task<CloudBlob> GetCloudBlobAsync(CloudBlobContainer container, string blobName)
+        static async Task<BlobBaseClient> GetCloudBlobAsync(BlobContainerClient container, string blobName)
         {
-            Microsoft.Azure.Storage.Blob.BlobType blobType = (await container.GetBlobReferenceFromServerAsync(blobName)).BlobType;
-            CloudBlob cloudBlob;
+            Azure.Storage.Blobs.Models.BlobType blobType = (await GetFileProperties(container,blobName)).BlobType;
+            BlobBaseClient cloudBlob;
             switch (blobType)
             {
-                case Microsoft.Azure.Storage.Blob.BlobType.AppendBlob:
-                    cloudBlob = container.GetAppendBlobReference(blobName);
+                case Azure.Storage.Blobs.Models.BlobType.Append:
+                    cloudBlob = container.GetAppendBlobClient(blobName);
                     break;
-                case Microsoft.Azure.Storage.Blob.BlobType.BlockBlob:
-                    cloudBlob = container.GetBlockBlobReference(blobName);
+                case Azure.Storage.Blobs.Models.BlobType.Block:
+                    cloudBlob = container.GetBlockBlobClient(blobName);
                     break;
-                case Microsoft.Azure.Storage.Blob.BlobType.PageBlob:
-                    cloudBlob = container.GetPageBlobReference(blobName);
+                case Azure.Storage.Blobs.Models.BlobType.Page:
+                    cloudBlob = container.GetPageBlobClient(blobName);
                     break;
-                case Microsoft.Azure.Storage.Blob.BlobType.Unspecified:
                 default:
                     throw new ArgumentException($"Invalid blob type {blobType.ToString()}", nameof(blobName));
             }
@@ -87,62 +82,50 @@ namespace Atkins.AzureHelpers
         {
             try
             {
-                CloudBlobContainer container = await GetContainer(containerName);
+                BlobContainerClient container = await GetContainer(containerName);
                 await new WaitForUpdate();
 
-                CloudBlob cloudBlob = null;
-                switch (blobType)
+                BlobBaseClient cloudBlob = blobType switch
                 {
-                    case BlobType.PAGE:
-                        {
-                            cloudBlob = container.GetPageBlobReference(blobSaveLocation);
-                            break;
-                        }
-
-                    case BlobType.APPEND:
-                        {
-                            cloudBlob = container.GetAppendBlobReference(blobSaveLocation);
-                            break;
-                        }
-
-                    case BlobType.BLOCK:
-                        {
-                            cloudBlob = container.GetBlockBlobReference(blobSaveLocation);
-                            break;
-                        }
-                    default:
-                        throw new ArgumentOutOfRangeException(nameof(blobType), blobType, null);
-                }
+                    BlobType.PAGE => container.GetPageBlobClient(blobSaveLocation),
+                    BlobType.APPEND => container.GetAppendBlobClient(blobSaveLocation),
+                    BlobType.BLOCK => container.GetBlockBlobClient(blobSaveLocation),
+                    _ => throw new ArgumentOutOfRangeException(nameof(blobType), blobType, null)
+                };
 
                 Debug.Log("Container :" + cloudBlob);
                 Debug.Log($"Uploading file {sourceFile} to {blobSaveLocation}");
 
-                TransferManager.Configurations.ParallelOperations = 64;
-
-                SingleTransferContext context = new SingleTransferContext()
+                FileInfo fileInfo = new FileInfo(sourceFile);
+                long uploadFileSize = fileInfo.Length;
+                ProgressRecorder progressHandler = new ProgressRecorder(Path.GetFileNameWithoutExtension(sourceFile), uploadFileSize)
                 {
-                    ProgressHandler = new ProgressRecorder(Path.GetFileNameWithoutExtension(containerName), new FileInfo(sourceFile).Length)
-                    {
-                        updateCallback = processCallback
-                    },
-                    ShouldOverwriteCallbackAsync = TransferContext.ForceOverwrite
+                    updateCallback = processCallback
                 };
-
-                UploadOptions options = new UploadOptions();
-
 
                 using (MemoryStream ms = new MemoryStream())
                 {
                     using (FileStream file = new FileStream(sourceFile, FileMode.Open, FileAccess.Read))
                     {
                         byte[] bytes = new byte[file.Length];
-                        file.Read(bytes, 0, (int)file.Length);
+                        await file.ReadAsync(bytes, 0, (int)file.Length, token);
                         ms.Write(bytes, 0, (int)file.Length);
                     }
 
-                    await TransferManager.UploadAsync(ms, cloudBlob, options, context, token);
+                    if (cloudBlob is BlockBlobClient b)
+                    {
+                        await b.UploadAsync(ms, null, null, null, null, progressHandler, token);
+                    }
+                    else if (cloudBlob is PageBlobClient p)
+                    {
+                        await p.UploadPagesAsync(ms, 0, null, null, progressHandler, token);
+                    }
+                    else if (cloudBlob is AppendBlobClient a)
+                    {
+                        await a.AppendBlockAsync(ms, null, null, progressHandler, token);
+                    }
                 }
-
+                
                 return true;
             }
             catch (Exception e)
@@ -172,50 +155,45 @@ namespace Atkins.AzureHelpers
 
             try
             {
-                CloudBlobContainer container = await GetContainer(containerName);
-                CloudBlob cloudBlob = await GetCloudBlobAsync(container, sourceLocation);
+                BlobContainerClient container = await GetContainer(containerName);
+                BlobBaseClient cloudBlob = await GetCloudBlobAsync(container, sourceLocation);
                 await new WaitForUpdate();
                 Debug.Log("Container :" + cloudBlob);
 
                 // Download a blob to your file system
-                string path = Path.Combine(saveLocation, sourceLocation);
+                string localPath = Path.Combine(saveLocation, sourceLocation);
 
-                if (File.Exists(path))
+                if (File.Exists(localPath))
                 {
-                    await AsyncFile.DeleteAsync(path);
+                    await AsyncFile.DeleteAsync(localPath);
                 }
 
-                Debug.Log($"Downloading file {sourceLocation} to {path}");
+                Debug.Log($"Downloading file {sourceLocation} to {localPath}");
 
-                Directory.CreateDirectory(Path.GetDirectoryName(path)); //ensure the directory exists
-
-                await cloudBlob.FetchAttributesAsync();
-                using (MemoryStream memoryStream = new MemoryStream())
+                using (FileStream outputFile = File.OpenWrite(localPath))
                 {
-                    TransferManager.Configurations.ParallelOperations = 64;
-
-                    SingleTransferContext context = new SingleTransferContext()
+                    ProgressRecorder progressHandler = new ProgressRecorder(Path.GetFileNameWithoutExtension(sourceLocation), await CheckFileSize(container, sourceLocation))
                     {
-                        ProgressHandler = new ProgressRecorder(Path.GetFileNameWithoutExtension(sourceLocation), cloudBlob)
-                        {
-                            updateCallback = processCallback
-                        }
+                        updateCallback = processCallback
                     };
-                    DownloadOptions options = new DownloadOptions
-                    {
-                        DisableContentMD5Validation = true
-                    };
+                    
+                    //Choose an appropriate buffer size
+                    byte[] downloadBuffer = new byte[81920];
+                    int bytesRead;
+                    int totalBytesDownloaded = 0;
 
-                    await TransferManager.DownloadAsync(cloudBlob, memoryStream, options, context);
-
-                    using (FileStream file = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
+                    Directory.CreateDirectory(Path.GetDirectoryName(localPath) ?? string.Empty); //ensure the directory exists
+                    BlobDownloadInfo blobToDownload = (await cloudBlob.DownloadAsync()).Value;
+                    
+                    while((bytesRead = await blobToDownload.Content.ReadAsync(downloadBuffer,0,downloadBuffer.Length))!=0)
                     {
-                        memoryStream.WriteTo(file);
+                        outputFile.Write(downloadBuffer, 0, bytesRead); // Write the download bytes from source stream to destination stream.
+                        totalBytesDownloaded += bytesRead;//Increment the total downloaded counter. This is used for percentage calculation
+                        progressHandler.Report(totalBytesDownloaded);
                     }
-
-                    Debug.Log($"Download finished {sourceLocation} to {path}");
                 }
-
+                
+                Debug.Log($"Download finished {sourceLocation} to {localPath}");
                 return true;
             }
             catch (Exception e)
@@ -227,53 +205,6 @@ namespace Atkins.AzureHelpers
             return false;
         }
         
-       /// <summary>
-       ///    Get the property data for the Blob file.
-       /// </summary>
-        public static async Task<BlobProperties> GetFileProperties(string containerName, string fileName)
-        {
-            try
-            {
-                CloudBlobContainer container = await GetContainer(containerName);
-                CloudBlob cloudBlob = await GetCloudBlobAsync(container, fileName);
-                
-                await cloudBlob.FetchAttributesAsync();
-
-                if (cloudBlob.Properties != null)
-                {
-                    return cloudBlob.Properties;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-
-            return new BlobProperties();
-        }
-
-        /// <summary>
-        ///     Get the last modified time of a file in Azure async
-        /// </summary>
-        public static async Task<DateTime> LastModifiedAsync(string containerName, string fileName)
-        {
-            try
-            {
-                BlobProperties properties = await GetFileProperties(containerName, fileName);
-
-                if (properties.LastModified != null)
-                {
-                    return properties.LastModified.Value.UtcDateTime;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-
-            return DateTime.MinValue;
-        }
-
         /// <summary>
         /// Delete a file from Azure async
         /// </summary>
@@ -281,11 +212,10 @@ namespace Atkins.AzureHelpers
         {
             try
             {
-                CloudBlobContainer container = await GetContainer(containerName);
-                CloudBlob cloudBlob = await GetCloudBlobAsync(container, fileName);
-
+                BlobContainerClient container = await GetContainer(containerName);
+                BlobBaseClient cloudBlob = await GetCloudBlobAsync(container, fileName);
+                
                 bool exists = await cloudBlob.ExistsAsync();
-
                 if (exists)
                 {
                     await cloudBlob.DeleteAsync();
@@ -299,20 +229,60 @@ namespace Atkins.AzureHelpers
                 return false;
             }
         }
+        
+       /// <summary>
+       ///    Get the property data for the Blob file.
+       /// </summary>
+        public static async Task<BlobProperties> GetFileProperties(BlobContainerClient container, string fileName)
+        {
+            try
+            {
+                BlobBaseClient cloudBlob = await GetCloudBlobAsync(container, fileName);
+                return await cloudBlob.GetPropertiesAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
 
+            return new BlobProperties();
+        }
+
+        /// <summary>
+        ///     Get the last modified time of a file in Azure async
+        /// </summary>
+        public static async Task<DateTime> LastModifiedAsync(BlobContainerClient container, string fileName)
+        {
+            try
+            {
+                BlobProperties properties = await GetFileProperties(container, fileName);
+
+                if (properties.LastModified != null)
+                {
+                    return properties.LastModified.UtcDateTime;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return DateTime.MinValue;
+        }
+        
         /// <summary>
         /// Unused function?
         /// Function giving the size of a file
         /// </summary>
-        /// <param name="containerName">The cloud blob container</param>
+        /// <param name="container">The cloud blob container</param>
         /// <param name="fileName">The name of the file we want the size of</param>
         /// <returns>Returns the lenght of the file</returns>
-        public static async Task<long> CheckFileSize(string containerName, string fileName)
+        public static async Task<long> CheckFileSize(BlobContainerClient container, string fileName)
         {
             try
             {
-                BlobProperties properties = await GetFileProperties(containerName, fileName);
-                return properties.Length;
+                BlobProperties properties = await GetFileProperties(container, fileName);
+                return properties.ContentLength;
             }
             catch (Exception e)
             {

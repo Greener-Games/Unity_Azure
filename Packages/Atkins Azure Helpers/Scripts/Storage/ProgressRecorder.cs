@@ -1,41 +1,24 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Storage.Blob;
-using Microsoft.Azure.Storage.DataMovement;
-using UnityAsyncAwaitUtil;
+using Azure.Storage.Blobs.Specialized;
 
 namespace Atkins.AzureHelpers
 {
     /// <summary>
     /// A helper class to record progress reported by data movement library.
     /// </summary>
-    public class ProgressRecorder : IProgress<TransferStatus>
+    public class ProgressRecorder : Progress<long>
     {
         string fileName;
         long totalBytes;
-            
-        long latestBytesTransferred;
-        long latestNumberOfFilesTransferred;
-        long latestNumberOfFilesSkipped;
-        long latestNumberOfFilesFailed;
-            
+        long bytesTransferred;
+
         Queue<long> timeQueue = new Queue<long>(200);
         Queue<long> bytesQueue = new Queue<long>(200);
         DateTime updateTime = System.DateTime.Now;
         
         public Action<ProgressRecorder> updateCallback;
-
-        /// <summary>
-        /// A very basic constructor
-        /// </summary>
-        /// <param name="fileId"></param>
-        /// <param name="cloudBlob"></param>
-        public ProgressRecorder(string fileId, CloudBlob cloudBlob)
-        {
-            fileName = fileId;
-            totalBytes = cloudBlob.Properties.Length;
-        }
         
         /// <summary>
         /// A very basic constructor
@@ -51,7 +34,7 @@ namespace Atkins.AzureHelpers
         /// <summary>
         /// Gets the current download speed of the file
         /// </summary>
-        double TransferSpeed => CalculateSpeed(latestBytesTransferred);
+        double TransferSpeed => CalculateSpeed(bytesTransferred);
 
 /// <summary>
 /// Returns the current percentage of the download between 0-100
@@ -62,26 +45,29 @@ namespace Atkins.AzureHelpers
         {
             get
             {
-                TimeSpan time = new TimeSpan(0, 0, (int)((totalBytes - latestBytesTransferred) / (TransferSpeed == 0 ? 1 : TransferSpeed)));
+                TimeSpan time = new TimeSpan(0, 0, (int)((totalBytes - bytesTransferred) / (TransferSpeed == 0 ? 1 : TransferSpeed)));
                 return time;
             }
         }
-            
-        public async void Report(TransferStatus progress)
-        {
-            latestBytesTransferred = progress.BytesTransferred;
-            latestNumberOfFilesTransferred = progress.NumberOfFilesTransferred;
-            latestNumberOfFilesSkipped = progress.NumberOfFilesSkipped;
-            latestNumberOfFilesFailed = progress.NumberOfFilesFailed;
 
-            await new WaitForUpdate();
+        public void Report(long l)
+        {
+            OnReport(l);
+        }
+        
+        protected override void OnReport(long l)
+        {
+            base.OnReport(l);
+
+            bytesTransferred = l;
+
             updateCallback?.Invoke(this);
         }
             
         public override string ToString()
         {
             return
-                $"Transferred bytes: {latestBytesTransferred}; Transfered: {latestNumberOfFilesTransferred}; Skipped: {latestNumberOfFilesSkipped}, Failed: {latestNumberOfFilesFailed}";
+                $"Transferred bytes: {bytesTransferred};";
         }
 
         /// <summary>
@@ -124,7 +110,7 @@ namespace Atkins.AzureHelpers
                 return 100;
             }
                     
-            return (int)((double) latestBytesTransferred / totalBytes * 100);
+            return (int)((double) bytesTransferred / totalBytes * 100);
         }
     }
 }
