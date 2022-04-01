@@ -1,5 +1,5 @@
 {
-  "name": "com.atkins.unity.azure-helpers",
+  "name": "com.atkins.azure-helpers",
   "displayName": "Atkins Azure Helpers",
   "description": "Azure Cloud Services",
   "version": "1.1.0",
@@ -26,5 +26,8 @@
     "com.greener-games.unity-ensure": "0.1.0"
   },
   "publishDate": "2021-01-22T14:06:59.6668582Z",
-  "samples": ""
+  "samples": "",
+  "publishConfig": {
+    "registry": "https://npm.pkg.jetbrains.space/atkinscreativedesign/p/package-server/atkins/"
+  }
 }
