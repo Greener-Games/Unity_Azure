@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38f0293456e4fcd819ef5049d76481c, type: 3}
   m_Name: Azure Settings
   m_EditorClassIdentifier: 
-  dataSource: creativedesign.database.windows.net
-  databaseUserId: CreativeDesign
-  databasePassword: AzureCD123
-  databaseName: ARMVP
+  dataSource: 
+  databaseUserId: 
+  databasePassword: 
+  databaseName: 
   storageConnectionString: 

@@ -1,8 +1,8 @@
 {
     "name": "Atkins.Azure.Editor",
+    "rootNamespace": "",
     "references": [
         "GUID:abfed8b42e5d1704c8ae32fe4faa0755",
-        "GUID:97fb5fa9e59f22b468a84739edf361ca",
         "GUID:3bc7f0ed4ab7b9646af28589007ec4cb",
         "GUID:c7477e21c9bb8054f86a87dde044529c"
     ],

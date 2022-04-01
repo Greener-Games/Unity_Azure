@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
+using AsyncIO;
 
 namespace Atkins.AzureHelpers
 {
@@ -79,7 +80,7 @@ namespace Atkins.AzureHelpers
             string pathForWww = "file://" + filePath;
             
             UnityWebRequest unityWebRequest = UnityWebRequestTexture.GetTexture(pathForWww);
-            
+
             await unityWebRequest.SendWebRequest();
 
             if (unityWebRequest.isNetworkError || unityWebRequest.isHttpError)
