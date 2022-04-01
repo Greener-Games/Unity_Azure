@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AsyncIO.FileSystem;
 using Azure;
+using Azure.Core;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
@@ -24,8 +25,13 @@ namespace Atkins.AzureHelpers
         }
         
         static BlobServiceClient masterStorageAccount;
-        static BlobServiceClient MasterStorageAccount => masterStorageAccount ??= new BlobServiceClient(AzureSettings.StorageConnectionString);
+        static BlobServiceClient MasterStorageAccount => masterStorageAccount ??= new BlobServiceClient(AzureSettings.StorageConnectionString, new BlobClientOptions(){Retry = {Delay = TimeSpan.FromSeconds(2), MaxRetries = 5, Mode = RetryMode.Fixed}});
 
+        public static BlobServiceClient GetServiceClient(string uri, AzureSasCredential credential)
+        {
+            return new BlobServiceClient(new Uri(uri), credential);
+        }
+        
         public static BlobServiceClient GetServiceClient(string connectionString)
         {
             return new BlobServiceClient(connectionString);
@@ -172,10 +178,10 @@ namespace Atkins.AzureHelpers
         /// <param name="currentTries">current number of tried for the download</param>
         /// <returns></returns>
         public static async Task<bool> DownloadFile(string containerName,string sourceFile, string saveFile, bool appendFilePath = true, 
-                                                    Action<ProgressRecorder> processCallback = null, int maxTries = 3, int currentTries = 0, BlobServiceClient client = null)
+                                                    Action<ProgressRecorder> processCallback = null, BlobServiceClient client = null)
         {
             BlobContainerClient container = await GetContainer(containerName, client);
-            return await DownloadFile(container, sourceFile, saveFile, appendFilePath, processCallback, maxTries, currentTries);
+            return await DownloadFile(container, sourceFile, saveFile, appendFilePath, processCallback);
         }
 
         /// <summary>
@@ -189,12 +195,8 @@ namespace Atkins.AzureHelpers
         /// <param name="maxTries">Maximum numbers of tried before failing</param>
         /// <param name="currentTries">current number of tried for the download</param>
         /// <returns></returns>
-        public static async Task<bool> DownloadFile(BlobContainerClient container, string sourceFile, string saveFile, bool appendFilePath = true, Action<ProgressRecorder> processCallback = null, int maxTries = 3, int currentTries = 0)
+        public static async Task<bool> DownloadFile(BlobContainerClient container, string sourceFile, string saveFile, bool appendFilePath = true, Action<ProgressRecorder> processCallback = null)
         {
-            if (currentTries > maxTries)
-            {
-                return false;
-            }
             try
             {
                 BlobBaseClient cloudBlob = await GetCloudBlobAsync(container, sourceFile);
@@ -248,9 +250,8 @@ namespace Atkins.AzureHelpers
             catch (Exception e)
             {
                 Debug.LogError(e);
-                currentTries ++;
-                return await DownloadFile(container, sourceFile, saveFile, appendFilePath, processCallback,maxTries, currentTries);
             }
+            
             return false;
         }
 
