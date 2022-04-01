@@ -23,21 +23,40 @@ namespace Atkins.AzureHelpers
             BLOCK,
         }
         
-        static BlobServiceClient _storageAccount;
+        static BlobServiceClient masterStorageAccount;
+        static BlobServiceClient MasterStorageAccount => masterStorageAccount ??= new BlobServiceClient(AzureSettings.StorageConnectionString);
 
-        static BlobServiceClient StorageAccount => _storageAccount ?? (_storageAccount = new BlobServiceClient(AzureSettings.StorageConnectionString));
+        public static BlobServiceClient GetServiceClient(string connectionString)
+        {
+            return new BlobServiceClient(connectionString);
+        }
+        
+        /// <summary>
+        /// Static function returning the Container Task for a given name and connection string
+        /// </summary>
+        /// <param name="containerName">The name of the container we want to find</param>
+        /// <returns></returns>
+        public static async Task<BlobContainerClient> GetContainer(string containerName,string connectionString)
+        {
+            return await GetContainer(containerName, GetServiceClient(connectionString));
+        }
         
         /// <summary>
         /// Static function returning the Container Task for a given name
         /// </summary>
         /// <param name="containerName">The name of the container we want to find</param>
         /// <returns></returns>
-        public static async Task<BlobContainerClient> GetContainer(string containerName)
+        public static async Task<BlobContainerClient> GetContainer(string containerName, BlobServiceClient client = null)
         {
-            BlobContainerClient containerClient = StorageAccount.GetBlobContainerClient(containerName);
+            client ??= MasterStorageAccount;
+            
+            Debug.Log($"loading container {containerName} from {client.AccountName}");
+            BlobContainerClient containerClient = client.GetBlobContainerClient(containerName);
             await containerClient.CreateIfNotExistsAsync();
+            
             return containerClient;
         }
+        
 
         /// <summary>
         /// Function returning the Cloud Blob for a given container
@@ -67,10 +86,17 @@ namespace Atkins.AzureHelpers
             return cloudBlob;
         }
 
+        public static async Task<bool> UploadFile(string containerName, string sourceFile, string blobSaveLocation, CancellationToken token,
+                                                  BlobType blobType = BlobType.PAGE, Action<ProgressRecorder> processCallback = null, int tries = 0, BlobServiceClient client = null)
+        {
+            BlobContainerClient container = await GetContainer(containerName, client);
+            return await UploadFile(container, sourceFile, blobSaveLocation, token, blobType, processCallback, tries);
+        }
+
         /// <summary>
         /// Upload a file to Azure server async
         /// </summary>
-        /// <param name="containerName">The name of the CloudBlobContainer</param>
+        /// <param name="container">The Blob Container</param>
         /// <param name="sourceFile">The path of the file to upload</param>
         /// <param name="blobSaveLocation">The blob name</param>
         /// <param name="token">The cancellation token. Used only in TransferManager.UploadAsync method.</param>
@@ -78,11 +104,10 @@ namespace Atkins.AzureHelpers
         /// <param name="processCallback">The progress callback element. Used for creating the progress recorder</param>
         /// <param name="tries"></param>
         /// <returns></returns>
-        public static async Task<bool> UploadFile(string containerName, string sourceFile, string blobSaveLocation, CancellationToken token, BlobType blobType = BlobType.PAGE, Action<ProgressRecorder> processCallback = null, int tries = 0)
+        public static async Task<bool> UploadFile(BlobContainerClient container, string sourceFile, string blobSaveLocation, CancellationToken token, BlobType blobType = BlobType.PAGE, Action<ProgressRecorder> processCallback = null, int tries = 0)
         {
             try
             {
-                BlobContainerClient container = await GetContainer(containerName);
                 await new WaitForUpdate();
 
                 BlobBaseClient cloudBlob = blobType switch
@@ -146,16 +171,31 @@ namespace Atkins.AzureHelpers
         /// <param name="maxTries">Maximum numbers of tried before failing</param>
         /// <param name="currentTries">current number of tried for the download</param>
         /// <returns></returns>
-        public static async Task<bool> DownloadFile(string containerName, string sourceLocation, string saveLocation, Action<ProgressRecorder> processCallback = null, int maxTries = 3, int currentTries = 0)
+        public static async Task<bool> DownloadFile(string containerName,string sourceLocation, string saveLocation,
+                                                    Action<ProgressRecorder> processCallback = null, int maxTries = 3, int currentTries = 0, BlobServiceClient client = null)
+        {
+            BlobContainerClient container = await GetContainer(containerName, client);
+            return await DownloadFile(container, sourceLocation, saveLocation, processCallback, maxTries, currentTries);
+        }
+
+        /// <summary>
+        /// Download a file from Azure server async
+        /// </summary>
+        /// <param name="container">The name of the CloudBlobContainer</param>
+        /// <param name="sourceLocation">The blob name</param>
+        /// <param name="saveLocation">The path to the file we want to delete</param>
+        /// <param name="processCallback">The progress callback</param>
+        /// <param name="maxTries">Maximum numbers of tried before failing</param>
+        /// <param name="currentTries">current number of tried for the download</param>
+        /// <returns></returns>
+        public static async Task<bool> DownloadFile(BlobContainerClient container, string sourceLocation, string saveLocation, Action<ProgressRecorder> processCallback = null, int maxTries = 3, int currentTries = 0)
         {
             if (currentTries > maxTries)
             {
                 return false;
             }
-
             try
             {
-                BlobContainerClient container = await GetContainer(containerName);
                 BlobBaseClient cloudBlob = await GetCloudBlobAsync(container, sourceLocation);
                 await new WaitForUpdate();
                 Debug.Log("Container :" + cloudBlob);
@@ -200,20 +240,28 @@ namespace Atkins.AzureHelpers
             {
                 Debug.LogError(e);
                 currentTries ++;
-                return await DownloadFile(containerName, sourceLocation, saveLocation, processCallback,maxTries, currentTries);
+                return await DownloadFile(container, sourceLocation, saveLocation, processCallback,maxTries, currentTries);
             }
             return false;
         }
-        
+
         /// <summary>
         /// Delete a file from Azure async
         /// </summary>
-        public static async Task<bool> DeleteFile(string containerName, string fileName)
+        public static async Task<bool> DeleteFile(string containerName, string fileRoute, BlobServiceClient client = null)
+        {
+            BlobContainerClient container = await GetContainer(containerName, client);
+            return await DeleteFile(container, fileRoute);
+        }
+
+        /// <summary>
+        /// Delete a file from Azure async
+        /// </summary>
+        public static async Task<bool> DeleteFile(BlobContainerClient container, string fileRoute)
         {
             try
             {
-                BlobContainerClient container = await GetContainer(containerName);
-                BlobBaseClient cloudBlob = await GetCloudBlobAsync(container, fileName);
+                BlobBaseClient cloudBlob = await GetCloudBlobAsync(container, fileRoute);
                 
                 bool exists = await cloudBlob.ExistsAsync();
                 if (exists)
@@ -228,6 +276,12 @@ namespace Atkins.AzureHelpers
                 Debug.LogError(e);
                 return false;
             }
+        }
+        
+        public static async Task<BlobProperties> GetFileProperties(string containerName, string fileRoute, BlobServiceClient client = null)
+        {
+            BlobContainerClient container = await GetContainer(containerName, client);
+            return await GetFileProperties(container, fileRoute);
         }
         
        /// <summary>
@@ -248,14 +302,21 @@ namespace Atkins.AzureHelpers
             return new BlobProperties();
         }
 
+       
+       public static async Task<DateTime> LastModifiedAsync(string containerName, string fileRoute, BlobServiceClient client = null)
+       {
+           BlobContainerClient container = await GetContainer(containerName, client);
+           return await LastModifiedAsync(container, fileRoute);
+       }
+       
         /// <summary>
         ///     Get the last modified time of a file in Azure async
         /// </summary>
-        public static async Task<DateTime> LastModifiedAsync(BlobContainerClient container, string fileName)
+        public static async Task<DateTime> LastModifiedAsync(BlobContainerClient container, string fileRoute)
         {
             try
             {
-                BlobProperties properties = await GetFileProperties(container, fileName);
+                BlobProperties properties = await GetFileProperties(container, fileRoute);
 
                 if (properties.LastModified != null)
                 {
@@ -270,24 +331,42 @@ namespace Atkins.AzureHelpers
             return DateTime.MinValue;
         }
         
+        public static async Task<long> CheckFileSize(string containerName, string fileRoute, BlobServiceClient client = null)
+        {
+            BlobContainerClient container = await GetContainer(containerName, client);
+            return await CheckFileSize(container, fileRoute);
+        }
+        
         /// <summary>
         /// Unused function?
         /// Function giving the size of a file
         /// </summary>
         /// <param name="container">The cloud blob container</param>
-        /// <param name="fileName">The name of the file we want the size of</param>
+        /// <param name="fileRoute">The name of the file we want the size of</param>
         /// <returns>Returns the lenght of the file</returns>
-        public static async Task<long> CheckFileSize(BlobContainerClient container, string fileName)
+        public static async Task<long> CheckFileSize(BlobContainerClient container, string fileRoute)
         {
             try
             {
-                BlobProperties properties = await GetFileProperties(container, fileName);
+                BlobProperties properties = await GetFileProperties(container, fileRoute);
                 return properties.ContentLength;
             }
             catch (Exception e)
             {
                 return 0;
             }
+        }
+
+        public static async Task<bool> FileExists(string containerName, string fileRoute, BlobServiceClient client = null)
+        {
+            BlobContainerClient container = await GetContainer(containerName, client);
+            return await FileExists(container, fileRoute);
+        }
+        
+        public static async Task<bool> FileExists(BlobContainerClient container, string fileName)
+        {
+            BlobClient blobClient = container.GetBlobClient(fileName);
+            return await blobClient.ExistsAsync();
         }
     }
 }
