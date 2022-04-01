@@ -26,7 +26,7 @@
     "com.greener-games.unity-ensure": "0.1.0"
   },
   "publishDate": "2021-01-22T14:06:59.6668582Z",
-  "samples": "",
+  "samples": null,
   "publishConfig": {
     "registry": "https://npm.pkg.jetbrains.space/atkinscreativedesign/p/package-server/atkins/"
   }
