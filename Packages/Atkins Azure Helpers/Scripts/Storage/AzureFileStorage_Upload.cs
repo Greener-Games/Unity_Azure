@@ -6,7 +6,7 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Specialized;
 using UnityEngine;
 
-namespace Atkins.AzureHelpers
+namespace AzureHelpers
 {
     public partial class AzureFileStorage
     {

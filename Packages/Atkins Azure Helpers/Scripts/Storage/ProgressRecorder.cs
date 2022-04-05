@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Azure.Storage.Blobs.Specialized;
 
-namespace Atkins.AzureHelpers
+namespace AzureHelpers
 {
     /// <summary>
     /// A helper class to record progress reported by data movement library.

@@ -12,7 +12,7 @@ using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
 using UnityEngine;
 
-namespace Atkins.AzureHelpers
+namespace AzureHelpers
 {
     /// <summary>
     /// Class acting like an interface between ICON and Azure systems for uploading files.

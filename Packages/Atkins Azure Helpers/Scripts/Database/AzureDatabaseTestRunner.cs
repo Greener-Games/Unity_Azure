@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
-using Atkins.AzureHelpers;
+using AzureHelpers;
 using DatabaseWrapper.Core;
 using DatabaseWrapper.SqlServer;
 using Newtonsoft.Json;
@@ -13,7 +13,7 @@ using UnityEngine;
 
 #endregion
 
-namespace Atkins.AzureHelpers
+namespace AzureHelpers
 {
     public class AzureDatabaseTestRunner : MonoBehaviour
     {

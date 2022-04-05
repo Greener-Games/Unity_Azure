@@ -2,7 +2,7 @@ using GG.ScriptableDataAsset;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Atkins.AzureHelpers
+namespace AzureHelpers
 {
     /// <summary>
     /// A class creating the Azure settings 

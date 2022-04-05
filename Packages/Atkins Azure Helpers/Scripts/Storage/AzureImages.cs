@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using AsyncIO;
 
-namespace Atkins.AzureHelpers
+namespace AzureHelpers
 {
     /// <summary>
     /// Plays the role of an interface between the Azure system and ICON framework. It allows user/coder to simply upload, download and delete images on server

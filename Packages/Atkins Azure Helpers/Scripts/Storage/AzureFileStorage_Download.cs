@@ -7,7 +7,7 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
 
-namespace Atkins.AzureHelpers
+namespace AzureHelpers
 {
     public partial class AzureFileStorage
     {
@@ -17,16 +17,22 @@ namespace Atkins.AzureHelpers
             public bool deleteFileIfExisting = true;
 
             public Action<ProgressRecorder> processCallback;
-
-            public int degreeOfParallelism = 8;
-
+            
             public bool debug = true;
+
+            public int bufferSize = 50 * 1024 * 1024; //50mb;
+        }
+
+        public class BulkDownloadOptions : DownloadOptions
+        {
+            public IProgress<string> bulkDownloadProgress;
+            public int degreeOfParallelism = 8;
         }
 
         static DownloadOptions DefaultDownloadOptions => new DownloadOptions();
 
         /// <summary>
-        /// Download a file from Azure server async
+        /// Download a file from Azure server
         /// </summary>
         /// <param name="containerName">The name of the CloudBlobContainer</param>
         /// <param name="sourceFile">The blob name</param>
@@ -43,7 +49,7 @@ namespace Atkins.AzureHelpers
         }
 
         /// <summary>
-        /// Download a file from Azure server async
+        /// Download a file from Azure server
         /// </summary>
         /// <param name="container">The name of the CloudBlobContainer</param>
         /// <param name="sourceFile">The blob name</param>
@@ -71,17 +77,34 @@ namespace Atkins.AzureHelpers
             return false;
         }
 
-        public static async Task<bool> BulkDownloadFiles(string containerName, List<string> sourceFiles, string saveLocation, DownloadOptions downloadOptions = null, BlobServiceClient client = null)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="containerName"></param>
+        /// <param name="sourceFiles"></param>
+        /// <param name="saveLocation"></param>
+        /// <param name="downloadOptions"></param>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        public static async Task<bool> BulkDownloadFiles(string containerName, IEnumerable<string> sourceFiles, string saveLocation, BulkDownloadOptions downloadOptions = null, BlobServiceClient client = null)
         {
-            downloadOptions ??= DefaultDownloadOptions;
+            downloadOptions ??= DefaultDownloadOptions as BulkDownloadOptions;
 
             BlobContainerClient container = await GetContainerAsync(containerName, client);
             return await BulkDownloadFiles(container, sourceFiles, saveLocation, downloadOptions);
         }
 
-        public static async Task<bool> BulkDownloadFiles(BlobContainerClient container, IEnumerable<string> sourceFiles, string saveLocation, DownloadOptions downloadOptions = null)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="container"></param>
+        /// <param name="sourceFiles"></param>
+        /// <param name="saveLocation"></param>
+        /// <param name="downloadOptions"></param>
+        /// <returns></returns>
+        public static async Task<bool> BulkDownloadFiles(BlobContainerClient container, IEnumerable<string> sourceFiles, string saveLocation, BulkDownloadOptions downloadOptions = null)
         {
-            downloadOptions ??= DefaultDownloadOptions;
+            downloadOptions ??= DefaultDownloadOptions as BulkDownloadOptions;
 
             try
             {
@@ -94,9 +117,8 @@ namespace Atkins.AzureHelpers
                         return;
                     }
                     
-                    Debug($"Downloading file {source} to {localPath}", downloadOptions.debug);
                     await Download(container, localPath, source, 1, downloadOptions);
-                });
+                }, downloadOptions.bulkDownloadProgress);
                 return true;
             }
             catch (Exception e)
@@ -106,8 +128,15 @@ namespace Atkins.AzureHelpers
 
             return false;
         }
-
-
+        
+        /// <summary>
+        /// checks the file save location is valid and appends the total path if required,
+        /// if the file already exists and is set to download will delete the current file
+        /// </summary>
+        /// <param name="options"></param>
+        /// <param name="sourceLocation"></param>
+        /// <param name="saveLocation"></param>
+        /// <returns></returns>
         static async Task<string> ValidateSaveLocation(DownloadOptions options, string sourceLocation, string saveLocation)
         {
             // Download a blob to your file system
@@ -127,6 +156,14 @@ namespace Atkins.AzureHelpers
             return localPath;
         }
         
+        /// <summary>
+        /// Runs the actual download for a file
+        /// </summary>
+        /// <param name="container"></param>
+        /// <param name="localPath"></param>
+        /// <param name="sourceFile"></param>
+        /// <param name="totalSize"></param>
+        /// <param name="downloadOptions"></param>
         static async Task Download(BlobContainerClient container, string localPath, string sourceFile, long totalSize, DownloadOptions downloadOptions)
         {
             if (!downloadOptions.deleteFileIfExisting && File.Exists(localPath))
@@ -144,7 +181,7 @@ namespace Atkins.AzureHelpers
                 };
 
                 //Choose an appropriate buffer size
-                byte[] downloadBuffer = new byte[81920];
+                byte[] downloadBuffer = new byte[downloadOptions.bufferSize];
                 int bytesRead;
                 int totalBytesDownloaded = 0;
 
@@ -158,7 +195,6 @@ namespace Atkins.AzureHelpers
                 }
             }
             Debug($"Download finished {sourceFile} to {localPath}", downloadOptions.debug);
-
         }
     }
 }

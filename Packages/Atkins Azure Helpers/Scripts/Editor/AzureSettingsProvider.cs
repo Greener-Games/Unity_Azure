@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Atkins.AzureHelpers.Editor
+namespace AzureHelpers.Editor
 {
     /// <summary>
     /// Editor script used to enter settings for Azure
