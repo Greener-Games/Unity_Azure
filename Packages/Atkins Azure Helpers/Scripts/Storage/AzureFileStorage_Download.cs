@@ -44,7 +44,7 @@ namespace AzureHelpers
         {
             downloadOptions ??= DefaultDownloadOptions;
             
-            BlobContainerClient container = await GetContainerAsync(containerName, client);
+            BlobContainerClient container = await GetContainer(containerName, client);
             return await DownloadFile(container, sourceFile, saveFile, downloadOptions);
         }
 
@@ -90,7 +90,7 @@ namespace AzureHelpers
         {
             downloadOptions ??= DefaultDownloadOptions as BulkDownloadOptions;
 
-            BlobContainerClient container = await GetContainerAsync(containerName, client);
+            BlobContainerClient container = await GetContainer(containerName, client);
             return await BulkDownloadFiles(container, sourceFiles, saveLocation, downloadOptions);
         }
 
@@ -171,7 +171,7 @@ namespace AzureHelpers
                 return;
             }
             
-            BlobBaseClient cloudBlob = await GetCloudBlobAsync(container, sourceFile);
+            BlobBaseClient cloudBlob = await GetCloudBlob(container, sourceFile);
             Debug($"Downloading file {sourceFile} to {localPath}", downloadOptions.debug);
             using (FileStream outputFile = new FileStream(localPath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
             {

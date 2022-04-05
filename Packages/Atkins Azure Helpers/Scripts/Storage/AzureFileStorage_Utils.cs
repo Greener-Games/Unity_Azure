@@ -19,16 +19,16 @@ namespace AzureHelpers
             }
         }
         
-        public static async Task<BlobProperties> GetFilePropertiesAsync(string containerName, string fileRoute, BlobServiceClient client = null)
+        public static async Task<BlobProperties> GetFileProperties(string containerName, string fileRoute, BlobServiceClient client = null)
         {
-            BlobContainerClient container = await GetContainerAsync(containerName, client);
-            return await GetFilePropertiesAsync(container, fileRoute);
+            BlobContainerClient container = await GetContainer(containerName, client);
+            return await GetFileProperties(container, fileRoute);
         }
 
         /// <summary>
         ///    Get the property data for the Blob file.
         /// </summary>
-        public static async Task<BlobProperties> GetFilePropertiesAsync(BlobContainerClient container, string fileName)
+        public static async Task<BlobProperties> GetFileProperties(BlobContainerClient container, string fileName)
         {
             try
             {
@@ -42,34 +42,10 @@ namespace AzureHelpers
 
             return new BlobProperties();
         }
-
-        public static BlobProperties GetFileProperties(string containerName, string fileRoute, BlobServiceClient client = null)
-        {
-            BlobContainerClient container = GetContainer(containerName, client);
-            return GetFileProperties(container, fileRoute);
-        }
-
-        /// <summary>
-        ///    Get the property data for the Blob file.
-        /// </summary>
-        public static BlobProperties GetFileProperties(BlobContainerClient container, string fileName)
-        {
-            try
-            {
-                BlobBaseClient cloudBlob = container.GetBlobClient(fileName);
-                return cloudBlob.GetProperties();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-
-            return new BlobProperties();
-        }
-
+        
         public static async Task<DateTime> LastModifiedAsync(string containerName, string fileRoute, BlobServiceClient client = null)
         {
-            BlobContainerClient container = await GetContainerAsync(containerName, client);
+            BlobContainerClient container = await GetContainer(containerName, client);
             return await LastModifiedAsync(container, fileRoute);
         }
 
@@ -80,7 +56,7 @@ namespace AzureHelpers
         {
             try
             {
-                BlobProperties properties = await GetFilePropertiesAsync(container, fileRoute);
+                BlobProperties properties = await GetFileProperties(container, fileRoute);
 
                 if (properties.LastModified != null)
                 {
@@ -97,7 +73,7 @@ namespace AzureHelpers
 
         public static async Task<long> CheckFileSize(string containerName, string fileRoute, BlobServiceClient client = null)
         {
-            BlobContainerClient container = await GetContainerAsync(containerName, client);
+            BlobContainerClient container = await GetContainer(containerName, client);
             return await CheckFileSize(container, fileRoute);
         }
 
@@ -112,7 +88,7 @@ namespace AzureHelpers
         {
             try
             {
-                BlobProperties properties = await GetFilePropertiesAsync(container, fileRoute);
+                BlobProperties properties = await GetFileProperties(container, fileRoute);
                 return properties.ContentLength;
             }
             catch (Exception e)
@@ -123,7 +99,7 @@ namespace AzureHelpers
 
         public static async Task<bool> FileExists(string containerName, string fileRoute, BlobServiceClient client = null)
         {
-            BlobContainerClient container = await GetContainerAsync(containerName, client);
+            BlobContainerClient container = await GetContainer(containerName, client);
             return await FileExists(container, fileRoute);
         }
 
@@ -135,7 +111,7 @@ namespace AzureHelpers
 
         public static async Task<List<BlobItem>> ListBlobs(string containerName, BlobServiceClient client = null)
         {
-            BlobContainerClient container = await GetContainerAsync(containerName, client);
+            BlobContainerClient container = await GetContainer(containerName, client);
             return await ListBlobs(container);
         }
 

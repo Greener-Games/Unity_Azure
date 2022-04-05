@@ -44,9 +44,9 @@ namespace AzureHelpers
         /// </summary>
         /// <param name="containerName">The name of the container we want to find</param>
         /// <returns></returns>
-        public static async Task<BlobContainerClient> GetContainerAsync(string containerName,string connectionString)
+        public static async Task<BlobContainerClient> GetContainer(string containerName,string connectionString)
         {
-            return await GetContainerAsync(containerName, GetServiceClient(connectionString));
+            return await GetContainer(containerName, GetServiceClient(connectionString));
         }
         
         /// <summary>
@@ -54,7 +54,7 @@ namespace AzureHelpers
         /// </summary>
         /// <param name="containerName">The name of the container we want to find</param>
         /// <returns></returns>
-        public static async Task<BlobContainerClient> GetContainerAsync(string containerName, BlobServiceClient client = null)
+        public static async Task<BlobContainerClient> GetContainer(string containerName, BlobServiceClient client = null)
         {
             client ??= MasterStorageAccount;
             
@@ -64,42 +64,15 @@ namespace AzureHelpers
             return containerClient;
         }
         
-        
-        /// <summary>
-        /// Static function returning the Container Task for a given name and connection string
-        /// </summary>
-        /// <param name="containerName">The name of the container we want to find</param>
-        /// <returns></returns>
-        public static BlobContainerClient GetContainer(string containerName,string connectionString)
-        {
-            return GetContainer(containerName, GetServiceClient(connectionString));
-        }
-        
-        /// <summary>
-        /// Static function returning the Container Task for a given name
-        /// </summary>
-        /// <param name="containerName">The name of the container we want to find</param>
-        /// <returns></returns>
-        public static BlobContainerClient GetContainer(string containerName, BlobServiceClient client = null)
-        {
-            client ??= MasterStorageAccount;
-            
-            UnityEngine.Debug.Log($"loading container {containerName} from {client.AccountName}");
-            BlobContainerClient containerClient = client.GetBlobContainerClient(containerName);
-            containerClient.CreateIfNotExists();
-            
-            return containerClient;
-        }
-
         /// <summary>
         /// Function returning the Cloud Blob for a given container
         /// </summary>
         /// <param name="container"></param>
         /// <param name="blobName"></param>
         /// <returns></returns>
-        static async Task<BlobBaseClient> GetCloudBlobAsync(BlobContainerClient container, string blobName)
+        static async Task<BlobBaseClient> GetCloudBlob(BlobContainerClient container, string blobName)
         {
-            Azure.Storage.Blobs.Models.BlobType blobType = (await GetFilePropertiesAsync(container,blobName)).BlobType;
+            Azure.Storage.Blobs.Models.BlobType blobType = (await GetFileProperties(container,blobName)).BlobType;
             BlobBaseClient cloudBlob;
             switch (blobType)
             {
@@ -119,34 +92,12 @@ namespace AzureHelpers
             return cloudBlob;
         }
         
-        static BlobBaseClient GetCloudBlob(BlobContainerClient container, string blobName)
-        {
-            Azure.Storage.Blobs.Models.BlobType blobType = GetFileProperties(container,blobName).BlobType;
-            BlobBaseClient cloudBlob;
-            switch (blobType)
-            {
-                case Azure.Storage.Blobs.Models.BlobType.Append:
-                    cloudBlob = container.GetAppendBlobClient(blobName);
-                    break;
-                case Azure.Storage.Blobs.Models.BlobType.Block:
-                    cloudBlob = container.GetBlockBlobClient(blobName);
-                    break;
-                case Azure.Storage.Blobs.Models.BlobType.Page:
-                    cloudBlob = container.GetPageBlobClient(blobName);
-                    break;
-                default:
-                    throw new ArgumentException($"Invalid blob type {blobType.ToString()}", nameof(blobName));
-            }
-
-            return cloudBlob;
-        }
-
         /// <summary>
         /// Delete a file from Azure async
         /// </summary>
         public static async Task<bool> DeleteFile(string containerName, string fileRoute, BlobServiceClient client = null)
         {
-            BlobContainerClient container = await GetContainerAsync(containerName, client);
+            BlobContainerClient container = await GetContainer(containerName, client);
             return await DeleteFile(container, fileRoute);
         }
 
@@ -157,7 +108,7 @@ namespace AzureHelpers
         {
             try
             {
-                BlobBaseClient cloudBlob = await GetCloudBlobAsync(container, fileRoute);
+                BlobBaseClient cloudBlob = await GetCloudBlob(container, fileRoute);
                 
                 bool exists = await cloudBlob.ExistsAsync();
                 if (exists)

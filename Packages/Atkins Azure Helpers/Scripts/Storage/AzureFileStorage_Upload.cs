@@ -14,7 +14,7 @@ namespace AzureHelpers
                                                   BlobType blobType = BlobType.PAGE, Action<ProgressRecorder> processCallback = null, int tries = 0,
                                                   BlobServiceClient client = null)
         {
-            BlobContainerClient container = await GetContainerAsync(containerName, client);
+            BlobContainerClient container = await GetContainer(containerName, client);
             return await UploadFile(container, sourceFile, blobLocation, token, blobType, processCallback, tries);
         }
 
