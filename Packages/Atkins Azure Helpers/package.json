@@ -1,6 +1,6 @@
 {
   "name": "com.greener-games.azure-helpers",
-  "displayName": "Atkins Azure Helpers",
+  "displayName": "Azure Helpers",
   "description": "Azure Cloud Services",
   "version": "1.1.0",
   "unity": "2020.3",
