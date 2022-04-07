@@ -109,17 +109,17 @@ namespace AzureHelpers
             return await blobClient.ExistsAsync();
         }
 
-        public static async Task<List<BlobItem>> ListBlobs(string containerName, BlobServiceClient client = null)
+        public static async Task<List<BlobItem>> ListBlobs(string containerName, string prefix = null, BlobServiceClient client = null)
         {
             BlobContainerClient container = await GetContainer(containerName, client);
-            return await ListBlobs(container);
+            return await ListBlobs(container, prefix);
         }
 
-        public static async Task<List<BlobItem>> ListBlobs(BlobContainerClient container)
+        public static async Task<List<BlobItem>> ListBlobs(BlobContainerClient container, string prefix = null)
         {
             List<BlobItem> files = new List<BlobItem>();
             //Gets List of Blobs
-            IAsyncEnumerable<Page<BlobItem>> list = container.GetBlobsAsync().AsPages(default, null);
+            IAsyncEnumerable<Page<BlobItem>> list = container.GetBlobsAsync(BlobTraits.None, BlobStates.None, prefix).AsPages(default, null);
             ;
 
             // Enumerate the blobs returned for each page.
@@ -134,11 +134,11 @@ namespace AzureHelpers
             return files;
         }
 
-        public static async Task<List<string>> GetTopLevelFolderStructure(BlobContainerClient blobContainerClient)
+        public static async Task<List<string>> GetTopLevelFolderStructure(BlobContainerClient blobContainerClient, string prefix = null)
         {
             List<string> returnValues = new List<string>();
             // Call the listing operation and return pages of the specified size.
-            IAsyncEnumerable<Page<BlobHierarchyItem>> resultSegment = blobContainerClient.GetBlobsByHierarchyAsync(BlobTraits.None, BlobStates.None, "/").AsPages(default);
+            IAsyncEnumerable<Page<BlobHierarchyItem>> resultSegment = blobContainerClient.GetBlobsByHierarchyAsync(BlobTraits.None, BlobStates.None,"/", prefix).AsPages(default);
 
             // Enumerate the blobs returned for each page.
             await foreach (Page<BlobHierarchyItem> blobPage in resultSegment)
