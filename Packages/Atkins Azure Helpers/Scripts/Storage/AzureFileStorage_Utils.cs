@@ -119,10 +119,10 @@ namespace AzureHelpers
         {
             List<BlobItem> files = new List<BlobItem>();
             //Gets List of Blobs
-            IAsyncEnumerable<Page<BlobItem>> list = container.GetBlobsAsync(BlobTraits.None, BlobStates.None, prefix).AsPages(default, null);
+            AsyncPageable<BlobItem> list = container.GetBlobsAsync(BlobTraits.None, BlobStates.None, prefix);
             
             // Enumerate the blobs returned for each page.
-            await foreach (Page<BlobItem> blobPage in list)
+            await foreach (Page<BlobItem> blobPage in list.AsPages())
             {
                 foreach (BlobItem blobItem in blobPage.Values)
                 {
@@ -137,12 +137,10 @@ namespace AzureHelpers
         {
             List<string> returnValues = new List<string>();
             // Call the listing operation and return pages of the specified size.
-            IAsyncEnumerable<Page<BlobHierarchyItem>> resultSegment = blobContainerClient.GetBlobsByHierarchyAsync(BlobTraits.None, BlobStates.None,"/", prefix).AsPages(default);
-
+            AsyncPageable<BlobHierarchyItem> resultSegment = blobContainerClient.GetBlobsByHierarchyAsync(BlobTraits.None, BlobStates.None,"/", prefix);
             // Enumerate the blobs returned for each page.
-            await foreach (Page<BlobHierarchyItem> blobPage in resultSegment)
+            await foreach (Page<BlobHierarchyItem> blobPage in resultSegment.AsPages())
             {
-                // A hierarchical listing may return both virtual directories and blobs.
                 foreach (BlobHierarchyItem blobItem in blobPage.Values)
                 {
                     if (blobItem.IsPrefix)
@@ -151,6 +149,9 @@ namespace AzureHelpers
                     }
                 }
             }
+            
+            
+
 
             return returnValues;
         }

@@ -7,13 +7,21 @@
         "GUID:3bc7f0ed4ab7b9646af28589007ec4cb",
         "GUID:9bc4ced8dc16ac04faac277b8cde5a8e",
         "GUID:91018aa887077a148a9037b4dfd0338a",
-        "GUID:b51f35f54283671459f3cd63f87aa0c9"
+        "GUID:b51f35f54283671459f3cd63f87aa0c9",
+        "GUID:4288f12d51c49ea4aa001a0954f9bad5",
+        "GUID:80a156b4cd55bb545b1a8738290ef8e6"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
-    "precompiledReferences": [],
+    "precompiledReferences": [
+        "Azure.Core.dll",
+        "Azure.Storage.Blobs.dll",
+        "Azure.Storage.Common.dll",
+        "Newtonsoft.Json.dll",
+        "Microsoft.Bcl.AsyncInterfaces.dll"
+    ],
     "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],
