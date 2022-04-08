@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using AzureHelpers;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -10,11 +11,12 @@ public class NewBehaviourScript : MonoBehaviour
     void Start()
     {
         Debug.Log(JsonConvert.SerializeObject(new GameObject()));
+        
+        Debug.Log(AzureFileStorage.MasterStorageAccount);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

@@ -120,8 +120,7 @@ namespace AzureHelpers
             List<BlobItem> files = new List<BlobItem>();
             //Gets List of Blobs
             IAsyncEnumerable<Page<BlobItem>> list = container.GetBlobsAsync(BlobTraits.None, BlobStates.None, prefix).AsPages(default, null);
-            ;
-
+            
             // Enumerate the blobs returned for each page.
             await foreach (Page<BlobItem> blobPage in list)
             {
