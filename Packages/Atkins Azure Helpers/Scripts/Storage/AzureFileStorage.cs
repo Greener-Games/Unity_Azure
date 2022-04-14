@@ -29,6 +29,9 @@ namespace AzureHelpers
         static BlobServiceClient masterStorageAccount;
         public static BlobServiceClient MasterStorageAccount => masterStorageAccount ??= new BlobServiceClient(AzureSettings.StorageConnectionString, new BlobClientOptions(){Retry = {Delay = TimeSpan.FromSeconds(2), MaxRetries = 5, Mode = RetryMode.Fixed}});
 
+        public static Dictionary<string, Dictionary<string, BlobContainerClient>> loadedContainers =
+            new Dictionary<string, Dictionary<string, BlobContainerClient>>();
+
         public static BlobServiceClient GetServiceClient(string uri, AzureSasCredential credential)
         {
             return new BlobServiceClient(new Uri(uri), credential);
@@ -58,10 +61,25 @@ namespace AzureHelpers
         {
             client ??= MasterStorageAccount;
             
-            BlobContainerClient containerClient = client.GetBlobContainerClient(containerName);
-            await containerClient.CreateIfNotExistsAsync();
+            if (loadedContainers.ContainsKey(client.AccountName) && loadedContainers[client.AccountName].ContainsKey(containerName))
+            {
+                return loadedContainers[client.AccountName][containerName];
+            }
+            else
+            {
+                UnityEngine.Debug.Log($"loading container : {containerName} from {client.AccountName}");
+                BlobContainerClient containerClient = client.GetBlobContainerClient(containerName);
+                await containerClient.CreateIfNotExistsAsync();
+
+                if (!loadedContainers.ContainsKey(client.AccountName))
+                {
+                    loadedContainers.Add(client.AccountName, new Dictionary<string, BlobContainerClient>());
+                }
+                
+                loadedContainers[client.AccountName].Add(containerName, containerClient);
             
-            return containerClient;
+                return containerClient;
+            }
         }
         
         /// <summary>

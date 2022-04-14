@@ -2,7 +2,7 @@
   "name": "com.greener-games.azure-helpers",
   "displayName": "Azure Helpers",
   "description": "Azure Cloud Services",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "unity": "2021.2",
   "license": "MIT",
   "repository": {
